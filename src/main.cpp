@@ -1,19 +1,31 @@
 #include <iostream>
-#include <random>
 #include "distributions.hpp"
+#include "simulation.hpp"
 using namespace std;
 
 int main(){
-    cout << "CSV+Sampling smoke test\n";
     try{
         auto arrival = DiscreteDist::fromCsv("config/arrivals.csv");
         auto service = DiscreteDist::fromCsv("config/services.csv");
-        std::mt19937 gen(12345);
-        cout << "Inter-arrival samples: ";
-        for(int i=0;i<10;++i) cout << arrival.sample(gen) << (i<9?' ':'\n');
-        cout << "Service samples:      ";
-        for(int i=0;i<10;++i) cout << service.sample(gen) << (i<9?' ':'\n');
+
+        SimConfig cfg;      // M=2, horizon=480, seed=12345
+        cfg.writeLog = true;
+
+        Simulation sim(cfg, arrival, service);
+        sim.run();
+
+        const auto& st = sim.stats();
+        cout << "Completed : " << st.completed << "\n";
+        if(st.completed>0){
+            cout << "Avg Wait  : " << (double)st.sumWait / st.completed << " min\n";
+            cout << "Avg Svc   : " << (double)st.sumSvc  / st.completed << " min\n";
+            cout << "Avg System: " << (double)st.sumSys  / st.completed << " min\n";
+        }
+        cout << "MaxQ      : " << st.maxQ << "\n";
+        cout << "AvgQ      : " << st.avgQ << "\n";
         cout << "OK\n";
-    }catch(const std::exception& e){ cerr << "ERROR: " << e.what() << "\n"; return 1; }
+    }catch(const std::exception& e){
+        cerr << "ERROR: " << e.what() << "\n"; return 1;
+    }
     return 0;
 }
