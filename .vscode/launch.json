@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run exe (gdb)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+      "cwd": "${workspaceFolder}",
+      "args": [],
+      "stopAtEntry": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "C:/Program Files/mingw64/bin/gdb.exe",
+      "console": "integratedTerminal",
+      "logging": { "engineLogging": false },
+      "preLaunchTask": "C/C++: g++ build active file"
+    }
+  ]
+}
