@@ -8,7 +8,7 @@ int main(){
         auto arrival = DiscreteDist::fromCsv("config/arrivals.csv");
         auto service = DiscreteDist::fromCsv("config/services.csv");
 
-        SimConfig cfg;      // M=2, horizon=480, seed=12345
+        SimConfig cfg;    // defaults: M=2, horizon=480, seed=12345
         cfg.writeLog = true;
 
         Simulation sim(cfg, arrival, service);
@@ -21,9 +21,10 @@ int main(){
             cout << "Avg Svc   : " << (double)st.sumSvc  / st.completed << " min\n";
             cout << "Avg System: " << (double)st.sumSys  / st.completed << " min\n";
         }
-        cout << "MaxQ      : " << st.maxQ << "\n";
-        cout << "AvgQ      : " << st.avgQ << "\n";
-        cout << "OK\n";
+        cout << "MaxQ      : " << st.maxQ  << "\n";
+        cout << "AvgQ      : " << st.avgQ  << "\n";
+        cout << "UtilAvg   : " << st.utilAvg*100.0 << "%\n";
+        cout << "Logs at   : out/tick_log.csv, out/summary.csv\n";
     }catch(const std::exception& e){
         cerr << "ERROR: " << e.what() << "\n"; return 1;
     }
