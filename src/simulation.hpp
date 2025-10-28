@@ -43,8 +43,11 @@ struct SimStats {
     long long sumSys  = 0;
     int maxQ = 0;
     double avgQ = 0.0;
-    double utilAvg = 0.0; // avg busy servers / M
+    double utilAvg = 0.0;
+    int waited = 0;        
+    double pWait = 0.0;    
 };
+
 
 // --- Simulation core ---
 class Simulation {
@@ -67,16 +70,17 @@ private:
     std::queue<int> Q;
     std::multimap<int, Event> FEL;
 
-    // stats
-    SimStats st;
-    long long queueLenIntegral = 0; // ∑ qlen per tick
-    long long busyServersIntegral = 0; // ∑ busyCount per tick
+// stats
+SimStats st;
+long long queueLenIntegral = 0;
+long long busyServersIntegral = 0;
+long long ticks = 0;  
 
     // helpers
     void scheduleNextArrival(int now);
     void handleDeparturesAt(int t, int& deps);
     void serveWaitingIfPossible(int t, int& starts);
-    void handleArrivalsAt(int t, int& arrs);
+    void handleArrivalsAt(int t, int& arrs, int& starts);
     void tickStats();
     int  countBusy() const;
 };

@@ -10,7 +10,6 @@ Simulation::Simulation(const SimConfig& cfg,
 : cfg(cfg), ARR(inter), SVC(svc), gen(cfg.seed)
 {
     servers.assign(cfg.M, {});
-    // first arrival
     int first = ARR.sample(gen);
     FEL.insert({first, Event{first, EvType::ARRIVAL, -1, -1}});
 }
@@ -29,7 +28,7 @@ void Simulation::handleDeparturesAt(int t, int& deps){
         const Event& e = it->second;
         if (e.type == EvType::DEPARTURE) {
             Server& s = servers[e.serverId];
-            s.busy = false; // boşaldı
+            s.busy = false;
             Customer& c = cust[e.custId];
             c.depart = t;
 
@@ -68,19 +67,17 @@ void Simulation::serveWaitingIfPossible(int t, int& starts){
     }
 }
 
-void Simulation::handleArrivalsAt(int t, int& arrs){
+void Simulation::handleArrivalsAt(int t, int& arrs, int& starts){
     auto range = FEL.equal_range(t);
     std::vector<std::multimap<int,Event>::iterator> dels;
 
     for (auto it = range.first; it != range.second; ++it) {
         const Event& e = it->second;
         if (e.type == EvType::ARRIVAL) {
-            // create customer
             Customer c; c.id = (int)cust.size(); c.arrival = t;
             cust.push_back(c);
             st.arrived++; arrs++;
 
-            // try immediate start
             int idle = -1;
             for (int i = 0; i < (int)servers.size(); ++i)
                 if (!servers[i].busy) { idle = i; break; }
@@ -94,8 +91,11 @@ void Simulation::handleArrivalsAt(int t, int& arrs){
                 Server& s = servers[idle];
                 s.busy = true; s.busyUntil = r.depart; s.served++;
                 FEL.insert({r.depart, Event{r.depart, EvType::DEPARTURE, r.id, idle}});
+
+                starts++;  // count immediate starts for logging consistency
             } else {
                 Q.push(c.id);
+                st.waited++;
                 if ((int)Q.size() > st.maxQ) st.maxQ = (int)Q.size();
             }
 
@@ -113,15 +113,13 @@ int Simulation::countBusy() const{
 }
 
 void Simulation::tickStats(){
-    // per-tick queue length & busy servers integrals
-    queueLenIntegral   += (long long)Q.size();
-    busyServersIntegral+= (long long)countBusy();
-    // sunucu bazlı busy tick sayacı (ileride kişi başı util için)
+    queueLenIntegral    += (long long)Q.size();
+    busyServersIntegral += (long long)countBusy();
     for (auto& s: servers) if (s.busy) s.totalBusyTicks++;
+    ++ticks; 
 }
 
 void Simulation::run(){
-    // tick log aç (overwrite)
     std::ofstream tickLog;
     if (cfg.writeLog) {
         tickLog.open(cfg.tickLogCsv, std::ios::trunc);
@@ -131,16 +129,10 @@ void Simulation::run(){
     for (clock = 0; ; ++clock) {
         int deps=0, starts=0, arrs=0;
 
-        // 1) departures first
         handleDeparturesAt(clock, deps);
-
-        // 2) serve waiting customers if servers are idle
         serveWaitingIfPossible(clock, starts);
+        handleArrivalsAt(clock, arrs, starts);
 
-        // 3) arrivals
-        handleArrivalsAt(clock, arrs);
-
-        // 4) per-tick stats & log
         tickStats();
         if (cfg.writeLog) {
             tickLog << clock << "," << arrs << "," << starts << "," << deps
@@ -153,19 +145,19 @@ void Simulation::run(){
     }
     if (cfg.writeLog) tickLog.close();
 
-    // aggregate KPIs
-    st.avgQ = (clock>0) ? (double)queueLenIntegral/clock : 0.0;
-    st.utilAvg = (clock>0) ? (double)busyServersIntegral / ( (double)cfg.M * (double)clock ) : 0.0;
+st.avgQ    = (ticks>0) ? (double)queueLenIntegral / ticks : 0.0;
+st.utilAvg = (ticks>0) ? (double)busyServersIntegral / ((double)cfg.M * (double)ticks) : 0.0;
+    st.pWait   = (st.completed>0) ? (double)st.waited / (double)st.completed : 0.0;
 
-    // summary CSV
     if (cfg.writeLog) {
         std::ofstream sum(cfg.summaryCsv, std::ios::trunc);
-        sum << "arrived,completed,avg_wait,avg_service,avg_system,max_q,avg_q,avg_util\n";
+        sum << "arrived,completed,avg_wait,avg_service,avg_system,max_q,avg_q,avg_util,p_wait\n";
         double aw = st.completed? (double)st.sumWait/st.completed : 0.0;
         double as = st.completed? (double)st.sumSvc /st.completed : 0.0;
         double ay = st.completed? (double)st.sumSys /st.completed : 0.0;
         sum << st.arrived << "," << st.completed << ","
             << aw << "," << as << "," << ay << ","
-            << st.maxQ << "," << st.avgQ << "," << st.utilAvg << "\n";
+            << st.maxQ << "," << st.avgQ << "," << st.utilAvg << ","
+            << st.pWait << "\n";
     }
 }
