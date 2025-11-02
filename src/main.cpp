@@ -10,6 +10,7 @@
 #include <unordered_map>
 #include <cctype>
 #include <map>
+#include <climits>
 
 using namespace std;
 
@@ -46,6 +47,15 @@ struct Server {
     string name;
     ServerStatus status = IDLE;
     int current_customer_id = -1;
+};
+
+struct SimulationStats {
+    double total_wait_time;
+    int customers_who_waited;
+    int max_queue_length;
+    int simulation_end_time;
+    
+    map<string, int> server_total_busy_time;
 };
 
 
@@ -218,11 +228,11 @@ vector<int> generateServiceTimesPerServer(const ServerSpec& s, int customers, mt
 }
 
 //declaring body of the logic methods
-void handle_departures(int clock, list<Event>& FEL, map<string, Server>& server_states);
+void handle_departures(int clock, list<Event>& FEL, map<string, Server>& server_states, SimulationStats& stats);
 void handle_waiting_list(int clock, queue<Customer>& waiting_list, map<string, Server>& server_states,
-                         list<Event>& FEL, const unordered_map<string, vector<int>>& service_samples);
+                         list<Event>& FEL, const unordered_map<string, vector<int>>& service_samples, SimulationStats& stats);
 void handle_arrivals(int clock, list<Event>& FEL, queue<Customer>& waiting_list, 
-                     map<string, Server>& server_states, const unordered_map<string, vector<int>>& service_samples);
+                     map<string, Server>& server_states, const unordered_map<string, vector<int>>& service_samples, SimulationStats& stats);
 
 // ----------------------------------- main -----------------------------------
 int main() {
@@ -258,22 +268,35 @@ int main() {
 
     cout << "Generated Arrival Times (t=0):" << endl;
     for(size_t i = 0; i < arrival_times.size(); ++i) {
-        cout << "Cst " << i+1 << ":" << setw(3) << arrival_times[i] << (( (i+1) % 10 == 0) ? "\n" : " ");
+        cout << "Cst " << left << setw(4) << i+1 
+             << "t=" << right << setw(4) << arrival_times[i];
+        
+        if ( (i+1) % 8 == 0 || i == arrival_times.size() - 1) {
+            cout << "\n";
+        } else {
+            cout << " | "; 
+        }
     }
-    cout << "\n\n";
+    cout << "\n";
 
     cout << "Service Times for Each Server" << endl;
     
-    for (auto kv : service_samples){
-        cout << "Server: " << kv.first << endl;
+    for (const auto& kv : service_samples){
+        cout << "\nServer: " << kv.first << endl;
         cout << "---------------------------" << endl;
-        int idx = 1;
-        for (auto i : kv.second){
-            cout << idx << " - " << i << endl;
-            idx++;
+        
+        for(size_t i = 0; i < kv.second.size(); ++i) {
+            cout << "Cst " << left << setw(4) << i+1 
+                 << "s=" << right << setw(2) << kv.second[i];
+            
+            if ( (i+1) % 8 == 0 || i == kv.second.size() - 1) {
+                cout << "\n";
+            } else {
+                cout << " | ";
+            }
         }
-        cout << endl;
     }
+    cout << endl;
 
     //----------------------------------- Phase-2 Simulation Start -----------------------------------
 
@@ -282,6 +305,12 @@ int main() {
     list<Event> FEL; // Future Event List (contains events to happen like customer Arrival or customer Departure)
     queue<Customer> waiting_list;   //customer's waiting line
     map<string, Server> server_states; //server's current state (IDLE or BUSY)
+
+    SimulationStats stats;
+    stats.total_wait_time = 0;
+    stats.customers_who_waited = 0;
+    stats.max_queue_length = 0;
+    stats.simulation_end_time = 0;
 
     for (const auto& server : servers) {
         string server_name = server.first;
@@ -312,9 +341,9 @@ int main() {
 
         // -------------------------------------------------
         // 
-        handle_departures(clock, FEL, server_states);
-        handle_waiting_list(clock, waiting_list, server_states, FEL, service_samples);
-        handle_arrivals(clock, FEL, waiting_list, server_states, service_samples);
+        handle_departures(clock, FEL, server_states, stats);
+        handle_waiting_list(clock, waiting_list, server_states, FEL, service_samples, stats);
+        handle_arrivals(clock, FEL, waiting_list, server_states, service_samples, stats);
         //
         // -------------------------------------------------
 
@@ -328,10 +357,57 @@ int main() {
         }
     }
 
+    cout << "\n--- SIMULATION END ---" << endl;
+    cout << "Simulation finished at clock: " << stats.simulation_end_time << endl;
+
+    //----------------------------------- Phase-3 KPI's -----------------------------------
+
+    cout << "\n=============================================" << endl;
+    cout << "--- SIMULATION STATISTICS & KPIs ---" << endl;
+    cout << "=============================================\n" << endl;
+
+    cout << "--- General Statistics ---" << endl;
+    cout << "  Total simulation time:     " << stats.simulation_end_time << " minutes" << endl;
+    cout << "  Total customers processed: " << customers << endl;
+    cout << "  Customers who waited:      " << stats.customers_who_waited << endl;
+    cout << "  Maximum queue length:      " << stats.max_queue_length << " customers" << endl;
+    
+    cout << "\n--- Wait Time KPIs ---" << endl;
+    cout << "  Total wait time:           " << fixed << setprecision(2) << stats.total_wait_time << " minutes" << endl;
+    
+    double avg_wait_time_all = stats.total_wait_time / customers;
+    cout << "  Avg. wait time (all cst):  " << fixed << setprecision(2) << avg_wait_time_all << " minutes" << endl;
+
+    if (stats.customers_who_waited > 0) {
+        double avg_wait_time_waited = stats.total_wait_time / stats.customers_who_waited;
+        cout << "  Avg. wait time (waiting cst):" << fixed << setprecision(2) << avg_wait_time_waited << " minutes" << endl;
+    } else {
+        cout << "  Avg. wait time (waiting cst): 0.00 minutes (No customers waited)" << endl;
+    }
+
+    cout << "\n--- Server Utilization ---" << endl;
+    
+    for (auto const& pair : server_states) {
+        string server_name = pair.first;
+        
+        int busy_time = stats.server_total_busy_time[server_name];
+        
+        double utilization = 0.0;
+        if (stats.simulation_end_time > 0) {
+            utilization = (double)busy_time / stats.simulation_end_time * 100.0;
+        }
+
+        cout << "  Server [" << setw(8) << left << server_name << "]: " 
+             << "Busy for " << setw(4) << right << busy_time << " min. "
+             << "(Utilization: " << fixed << setprecision(2) << utilization << "%)" << endl;
+    }
+    
+    cout << "\n=============================================" << endl;
+
     return 0;
 }
 
-void handle_departures(int clock, list<Event>& FEL, map<string, Server>& server_states) {
+void handle_departures(int clock, list<Event>& FEL, map<string, Server>& server_states, SimulationStats& stats) {
     
 
     //iterate FEL
@@ -347,6 +423,9 @@ void handle_departures(int clock, list<Event>& FEL, map<string, Server>& server_
             
             cout << "  DEPARTURE: Customer " << it->customer_id + 1
                  << " finished service at server '" << it->server_name << "'." << endl;
+
+            
+            stats.simulation_end_time = clock;
 
             //take the served server
             Server& server = server_states[it->server_name];
@@ -368,52 +447,74 @@ void handle_waiting_list(int clock,
                          queue<Customer>& waiting_list, 
                          map<string, Server>& server_states, 
                          list<Event>& FEL,
-                         const unordered_map<string, vector<int>>& service_samples) 
+                         const unordered_map<string, vector<int>>& service_samples,
+                         SimulationStats& stats) 
 {
-    if (waiting_list.empty()) {
-        return;
-    }
+    // Keep assigning customers as long as the queue is not empty
+    // AND we can find available servers for them.
+    while (!waiting_list.empty()) {
 
-    // pair type -> string(server name), Server(server structure)
-    for (auto& pair : server_states) {
-        
-        Server& server = pair.second;
-        
-        if (server.status == IDLE) {
-            //if waiting list is not empty we selected this server
+        // Peek at the customer at the front of the queue
+        Customer& customer_to_serve = waiting_list.front();
+        int customer_id = customer_to_serve.id;
 
-            if (waiting_list.empty()) {
-                break;
+        // Find the fastest available (IDLE) server
+        Server* best_server = nullptr;
+        int min_service_time = INT_MAX;
+
+        // Iterate through ALL servers to find the best fit
+        for (auto& pair : server_states) {
+            Server& current_server = pair.second;
+            
+            if (current_server.status == IDLE) {
+                // Check the service time for this specific customer
+                int potential_service_time = service_samples.at(current_server.name)[customer_id];
+                
+                // If it's the best so far, save it
+                if (potential_service_time < min_service_time) {
+                    min_service_time = potential_service_time;
+                    best_server = &current_server;
+                }
             }
+        }
 
-            //getting the customer whose going to be served
-            Customer customer_to_serve = waiting_list.front();
-            waiting_list.pop();
+        // Did we find an available server?
+        if (best_server != nullptr) {
+            // Yes, assign customer to the 'best_server'
 
-            //getting the service and the finish time for our customer
-            int service_time = service_samples.at(server.name)[customer_to_serve.id];
+            waiting_list.pop(); // Now remove customer from queue
+
+            // calculate stats
+            int wait_time = clock - customer_to_serve.arrival_time;
+            stats.total_wait_time += wait_time;
+            stats.customers_who_waited++;
+
+            int service_time = min_service_time;
             int finish_time = clock + service_time;
 
-            //set selected server to busy and customer being served
-            server.status = BUSY;
-            server.current_customer_id = customer_to_serve.id;
+            stats.server_total_busy_time[best_server->name] += service_time;
 
-            //adding departure event
-            Event departure_event{DEPARTURE, finish_time, customer_to_serve.id, server.name};
+            // set server to busy
+            best_server->status = BUSY;
+            best_server->current_customer_id = customer_id; 
 
-            //adding departure event to FEL
+            Event departure_event{DEPARTURE, finish_time, customer_id, best_server->name};
+
+            // adding departure event to FEL
             auto it = FEL.begin();
-            while (it != FEL.end() && it->time < departure_event.time) {    // bringing our iterator to the end of FEL
+            while (it != FEL.end() && it->time < departure_event.time) { 
                 ++it;
             }
-            
-            //this adds the departure event to the end of FEL
             FEL.insert(it, departure_event);
 
-            cout << "  QUEUE->SERVER: Customer " << customer_to_serve.id + 1
-                 << " (waited) assigned to server '" << server.name << "'."
+            cout << "  QUEUE->SERVER: Customer " << customer_id + 1 
+                 << " (waited " << wait_time << " min) assigned to (Best fit) server '" << best_server->name << "'."
                  << " Service time: " << service_time << " min."
                  << " (Finishes at t=" << finish_time << ")" << endl;
+
+        } else {
+            // No IDLE servers were found.
+            break; 
         }
     }
 }
@@ -422,7 +523,8 @@ void handle_arrivals(int clock,
                      list<Event>& FEL, 
                      queue<Customer>& waiting_list, 
                      map<string, Server>& server_states,
-                     const unordered_map<string, vector<int>>& service_samples) 
+                     const unordered_map<string, vector<int>>& service_samples,
+                     SimulationStats& stats) 
 {
     for (auto it = FEL.begin(); it != FEL.end();) {
 
@@ -439,30 +541,42 @@ void handle_arrivals(int clock,
 
             cout << "  ARRIVAL:   Customer " << customer_id + 1 << " arrived at t=" << clock << "." << endl;
 
-            Server* idle_server = nullptr;
+            Server* best_server = nullptr;
+            int min_service_time = INT_MAX;
 
             // pair type -> string(server name), Server(server structure)
             for (auto& pair : server_states) {
-                //idle server found
-                if (pair.second.status == IDLE) {
-                    idle_server = &pair.second; 
-                    break;
+                Server& current_server = pair.second;
+                
+                if (current_server.status == IDLE) {
+                    
+                    // check server's service time for this customer
+                    int potential_service_time = service_samples.at(current_server.name)[customer_id];
+                    
+                    // if this one is the best one yet assign it as the best server
+                    if (potential_service_time < min_service_time) {
+
+                        min_service_time = potential_service_time;
+                        best_server = &current_server;
+                    }
                 }
             }
 
-            if (idle_server != nullptr) {
+            if (best_server != nullptr) {
                 
                 
                 // get the service time
-                int service_time = service_samples.at(idle_server->name)[customer_id];
+                int service_time = service_samples.at(best_server->name)[customer_id];
                 int finish_time = clock + service_time;
 
+                stats.server_total_busy_time[best_server->name] += service_time;
+
                 // set our idle server to busy and give the customer id to be serviced
-                idle_server->status = BUSY;
-                idle_server->current_customer_id = customer_id;
+                best_server->status = BUSY;
+                best_server->current_customer_id = customer_id;
 
                 // adding departure event
-                Event departure_event{DEPARTURE, finish_time, customer_id, idle_server->name};
+                Event departure_event{DEPARTURE, finish_time, customer_id, best_server->name};
 
                 auto it_insert = it; //start from current location in FEL
                 ++it_insert; // move one step
@@ -474,7 +588,7 @@ void handle_arrivals(int clock,
                 // adding departure event to FEL
                 FEL.insert(it_insert, departure_event);
 
-                cout << "    -> Assigned to server '" << idle_server->name << "'."
+                cout << "    -> Assigned to server '" << best_server->name << "'."
                      << " Service time: " << service_time << " min."
                      << " (Finishes at t=" << finish_time << ")" << endl;
 
@@ -487,6 +601,10 @@ void handle_arrivals(int clock,
 
                 // add the customer to waiting list
                 waiting_list.push(new_customer);
+
+                if ((int)waiting_list.size() > stats.max_queue_length) {
+                    stats.max_queue_length = (int)waiting_list.size();
+                }
 
                 cout << "    -> All servers busy. Customer " << customer_id + 1
                      << " added to waiting list." << endl;
