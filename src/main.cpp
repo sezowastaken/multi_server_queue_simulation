@@ -11,6 +11,10 @@
 #include <cctype>
 #include <map>
 #include <climits>
+#include <fstream>
+#include <sstream>
+#include <chrono>
+#include <ctime>
 
 using namespace std;
 
@@ -228,14 +232,30 @@ vector<int> generateServiceTimesPerServer(const ServerSpec& s, int customers, mt
 }
 
 //declaring body of the logic methods
-void handle_departures(int clock, list<Event>& FEL, map<string, Server>& server_states, SimulationStats& stats);
+void handle_departures(int clock, list<Event>& FEL, map<string, Server>& server_states, SimulationStats& stats, ofstream& log_file);
 void handle_waiting_list(int clock, queue<Customer>& waiting_list, map<string, Server>& server_states,
-                         list<Event>& FEL, const unordered_map<string, vector<int>>& service_samples, SimulationStats& stats);
+                         list<Event>& FEL, const unordered_map<string, vector<int>>& service_samples,
+                         SimulationStats& stats, ofstream& log_file);
 void handle_arrivals(int clock, list<Event>& FEL, queue<Customer>& waiting_list, 
-                     map<string, Server>& server_states, const unordered_map<string, vector<int>>& service_samples, SimulationStats& stats);
+                     map<string, Server>& server_states, const unordered_map<string,
+                     vector<int>>& service_samples, SimulationStats& stats, ofstream& log_file);
 
 // ----------------------------------- main -----------------------------------
 int main() {
+
+    auto now = chrono::system_clock::now();
+    auto in_time_t = chrono::system_clock::to_time_t(now);
+    
+    stringstream ss_time;
+    ss_time << put_time(localtime(&in_time_t), "%Y%m%d_%H%M%S");
+    string log_filename = "logs/sim_log_" + ss_time.str() + ".log";
+
+    ofstream log_file(log_filename);
+    if (!log_file.is_open()) {
+        cerr << "FATAL ERROR: Could not create log file at: " << log_filename << endl;
+        cerr << "Please make sure the 'logs' directory exists." << endl;
+        return 1;
+    }
 
     //----------------------------------- Phase-1 Initialize -----------------------------------
     
@@ -248,11 +268,14 @@ int main() {
     auto raw_arrival_data = readArrivalDataFromCSV(ARRIVALS_FILE);
     auto servers = readServiceDataFromCSV(SERVICES_FILE);
 
-    cout << "Multi-Server Queue Simulation — Bootstrap OK. Files loaded.\n\n";
+    cout << "Multi-Server Queue Simulation - CMPE 412\n\n";
+    cout << "Logging all output to: " << log_filename << "\n" << endl;
+    log_file << "Multi-Server Queue Simulation - CMPE 412\n\n";
 
     int customers;
     cout << "How many customers: ";
     cin >> customers;
+    log_file << "Customer size: " << customers << "\n\n";
 
     vector<int> inter_arrival_times = fillArrivalList(customers, raw_arrival_data, gen);
     auto arrival_times = createArrivalTimes(inter_arrival_times);
@@ -265,42 +288,46 @@ int main() {
         service_samples[kv.first] = generateServiceTimesPerServer(kv.second, customers, gen);
     }
 
+    stringstream ss_setup;
 
-    cout << "Generated Arrival Times (t=0):" << endl;
+    ss_setup << "Generated Arrival Times (t=0):" << endl;
     for(size_t i = 0; i < arrival_times.size(); ++i) {
-        cout << "Cst " << left << setw(4) << i+1 
+        ss_setup << "Cst " << left << setw(4) << i+1 
              << "t=" << right << setw(4) << arrival_times[i];
         
         if ( (i+1) % 8 == 0 || i == arrival_times.size() - 1) {
-            cout << "\n";
+            ss_setup << "\n";
         } else {
-            cout << " | "; 
+            ss_setup << " | "; 
         }
     }
-    cout << "\n";
+    ss_setup << "\n";
 
-    cout << "Service Times for Each Server" << endl;
-    
+    ss_setup << "Service Times for Each Server" << endl;
     for (const auto& kv : service_samples){
-        cout << "\nServer: " << kv.first << endl;
-        cout << "---------------------------" << endl;
+        ss_setup << "\nServer: " << kv.first << endl;
+        ss_setup << "---------------------------" << endl;
         
         for(size_t i = 0; i < kv.second.size(); ++i) {
-            cout << "Cst " << left << setw(4) << i+1 
+            ss_setup << "Cst " << left << setw(4) << i+1 
                  << "s=" << right << setw(2) << kv.second[i];
             
             if ( (i+1) % 8 == 0 || i == kv.second.size() - 1) {
-                cout << "\n";
+                ss_setup << "\n";
             } else {
-                cout << " | ";
+                ss_setup << " | ";
             }
         }
     }
-    cout << endl;
+    ss_setup << endl;
+
+    cout << ss_setup.str();
+    log_file << ss_setup.str();
 
     //----------------------------------- Phase-2 Simulation Start -----------------------------------
 
     cout << "\n\n--- SIMULATION STARTING ---" << endl;
+    log_file << "\n\n--- SIMULATION STARTING ---" << endl;
 
     list<Event> FEL; // Future Event List (contains events to happen like customer Arrival or customer Departure)
     queue<Customer> waiting_list;   //customer's waiting line
@@ -326,7 +353,9 @@ int main() {
     }
 
     cout << "  [SETUP] FEL initialized with " << FEL.size() << " ARRIVAL events." << endl;
+    log_file << "  [SETUP] FEL initialized with " << FEL.size() << " ARRIVAL events." << endl;
     cout << "  [SETUP] All " << server_states.size() << " servers initialized as IDLE." << endl;
+    log_file << "  [SETUP] All " << server_states.size() << " servers initialized as IDLE." << endl;
 
     int clock = 0;
 
@@ -334,16 +363,17 @@ int main() {
 
         if ((!FEL.empty() && FEL.front().time == clock) || !waiting_list.empty()) {
              cout << "\n--- [CLOCK: " << clock << "] ---" << endl;
+             log_file << "\n--- [CLOCK: " << clock << "] ---" << endl;
         } else {
-            cout << "\n--- [CLOCK: " << clock << "] ---" << endl;
-            cout << "  (No events scheduled, queue is empty.)" << endl;
+             log_file << "\n--- [CLOCK: " << clock << "] ---" << endl;
+             log_file << "  (No events scheduled, queue is empty.)" << endl;
         }
 
         // -------------------------------------------------
         // 
-        handle_departures(clock, FEL, server_states, stats);
-        handle_waiting_list(clock, waiting_list, server_states, FEL, service_samples, stats);
-        handle_arrivals(clock, FEL, waiting_list, server_states, service_samples, stats);
+        handle_departures(clock, FEL, server_states, stats, log_file);
+        handle_waiting_list(clock, waiting_list, server_states, FEL, service_samples, stats, log_file);
+        handle_arrivals(clock, FEL, waiting_list, server_states, service_samples, stats, log_file);
         //
         // -------------------------------------------------
 
@@ -353,39 +383,42 @@ int main() {
 
         if (clock > 99999) {
             cout << "  [WARN] Simulation limit reached (99999). Breaking loop." << endl;
+            log_file << "  [WARN] Simulation limit reached (99999). Breaking loop." << endl;
             break;
         }
     }
 
-    cout << "\n--- SIMULATION END ---" << endl;
-    cout << "Simulation finished at clock: " << stats.simulation_end_time << endl;
-
     //----------------------------------- Phase-3 KPI's -----------------------------------
 
-    cout << "\n=============================================" << endl;
-    cout << "--- SIMULATION STATISTICS & KPIs ---" << endl;
-    cout << "=============================================\n" << endl;
+    stringstream ss_kpi;
 
-    cout << "--- General Statistics ---" << endl;
-    cout << "  Total simulation time:     " << stats.simulation_end_time << " minutes" << endl;
-    cout << "  Total customers processed: " << customers << endl;
-    cout << "  Customers who waited:      " << stats.customers_who_waited << endl;
-    cout << "  Maximum queue length:      " << stats.max_queue_length << " customers" << endl;
+    ss_kpi << "\n--- SIMULATION END ---" << endl;
+    ss_kpi << "Simulation finished at clock: " << stats.simulation_end_time << endl;
+
+    ss_kpi << "\n=============================================" << endl;
+    ss_kpi << "--- SIMULATION STATISTICS & KPIs ---" << endl;
+    ss_kpi << "=============================================\n" << endl;
+
+    ss_kpi << "--- General Statistics ---" << endl;
+    ss_kpi << "  Total simulation time:     " << stats.simulation_end_time << " minutes" << endl;
+    ss_kpi << "  Total customers processed: " << customers << endl;
+    ss_kpi << "  Customers who waited:      " << stats.customers_who_waited << endl;
+    ss_kpi << "  Maximum queue length:      " << stats.max_queue_length << " customers" << endl;
     
-    cout << "\n--- Wait Time KPIs ---" << endl;
-    cout << "  Total wait time:           " << fixed << setprecision(2) << stats.total_wait_time << " minutes" << endl;
+    ss_kpi << "\n--- Wait Time KPIs ---" << endl;
+    ss_kpi << "  Total wait time:           " << fixed << setprecision(2) << stats.total_wait_time << " minutes" << endl;
     
     double avg_wait_time_all = stats.total_wait_time / customers;
-    cout << "  Avg. wait time (all cst):  " << fixed << setprecision(2) << avg_wait_time_all << " minutes" << endl;
+    ss_kpi << "  Avg. wait time (all cst):  " << fixed << setprecision(2) << avg_wait_time_all << " minutes" << endl;
 
     if (stats.customers_who_waited > 0) {
         double avg_wait_time_waited = stats.total_wait_time / stats.customers_who_waited;
-        cout << "  Avg. wait time (waiting cst):" << fixed << setprecision(2) << avg_wait_time_waited << " minutes" << endl;
+        ss_kpi << "  Avg. wait time (waiting cst):" << fixed << setprecision(2) << avg_wait_time_waited << " minutes" << endl;
     } else {
-        cout << "  Avg. wait time (waiting cst): 0.00 minutes (No customers waited)" << endl;
+        ss_kpi << "  Avg. wait time (waiting cst): 0.00 minutes (No customers waited)" << endl;
     }
 
-    cout << "\n--- Server Utilization ---" << endl;
+    ss_kpi << "\n--- Server Utilization ---" << endl;
     
     for (auto const& pair : server_states) {
         string server_name = pair.first;
@@ -397,17 +430,22 @@ int main() {
             utilization = (double)busy_time / stats.simulation_end_time * 100.0;
         }
 
-        cout << "  Server [" << setw(8) << left << server_name << "]: " 
+        ss_kpi << "  Server [" << setw(8) << left << server_name << "]: " 
              << "Busy for " << setw(4) << right << busy_time << " min. "
              << "(Utilization: " << fixed << setprecision(2) << utilization << "%)" << endl;
     }
     
-    cout << "\n=============================================" << endl;
+    ss_kpi << "\n=============================================" << endl;
+
+    cout << ss_kpi.str();
+    log_file << ss_kpi.str();
+
+    log_file.close();
 
     return 0;
 }
 
-void handle_departures(int clock, list<Event>& FEL, map<string, Server>& server_states, SimulationStats& stats) {
+void handle_departures(int clock, list<Event>& FEL, map<string, Server>& server_states, SimulationStats& stats, ofstream& log_file) {
     
 
     //iterate FEL
@@ -423,7 +461,8 @@ void handle_departures(int clock, list<Event>& FEL, map<string, Server>& server_
             
             cout << "  DEPARTURE: Customer " << it->customer_id + 1
                  << " finished service at server '" << it->server_name << "'." << endl;
-
+            log_file << "  DEPARTURE: Customer " << it->customer_id + 1
+                 << " finished service at server '" << it->server_name << "'." << endl;
             
             stats.simulation_end_time = clock;
 
@@ -448,7 +487,8 @@ void handle_waiting_list(int clock,
                          map<string, Server>& server_states, 
                          list<Event>& FEL,
                          const unordered_map<string, vector<int>>& service_samples,
-                         SimulationStats& stats) 
+                         SimulationStats& stats,
+                         ofstream& log_file) 
 {
     // Keep assigning customers as long as the queue is not empty
     // AND we can find available servers for them.
@@ -511,6 +551,10 @@ void handle_waiting_list(int clock,
                  << " (waited " << wait_time << " min) assigned to (Best fit) server '" << best_server->name << "'."
                  << " Service time: " << service_time << " min."
                  << " (Finishes at t=" << finish_time << ")" << endl;
+            log_file << "  QUEUE->SERVER: Customer " << customer_id + 1 
+                 << " (waited " << wait_time << " min) assigned to (Best fit) server '" << best_server->name << "'."
+                 << " Service time: " << service_time << " min."
+                 << " (Finishes at t=" << finish_time << ")" << endl;
 
         } else {
             // No IDLE servers were found.
@@ -524,7 +568,8 @@ void handle_arrivals(int clock,
                      queue<Customer>& waiting_list, 
                      map<string, Server>& server_states,
                      const unordered_map<string, vector<int>>& service_samples,
-                     SimulationStats& stats) 
+                     SimulationStats& stats, 
+                     ofstream& log_file) 
 {
     for (auto it = FEL.begin(); it != FEL.end();) {
 
@@ -540,6 +585,7 @@ void handle_arrivals(int clock,
             int customer_id = it->customer_id;
 
             cout << "  ARRIVAL:   Customer " << customer_id + 1 << " arrived at t=" << clock << "." << endl;
+            log_file << "  ARRIVAL:   Customer " << customer_id + 1 << " arrived at t=" << clock << "." << endl;
 
             Server* best_server = nullptr;
             int min_service_time = INT_MAX;
