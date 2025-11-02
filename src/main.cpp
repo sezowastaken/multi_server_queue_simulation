@@ -70,19 +70,23 @@ static inline string trim(const string& s) {
     return s.substr(b, e - b);
 }
 
-// ------- ARRIVAL (inter-arrival) tarafı (senin mevcut fonksiyonların) -------
-vector<ArrivalData> readArrivalDataFromCSV(const string& filename) {
+// ------- ARRIVAL (inter-arrival) -------
+pair<vector<ArrivalData>, double> readArrivalDataFromCSV(const string& filename) {
     vector<ArrivalData> raw_data;
+    double prob_sum = 0.0;
     ifstream file(filename);
+
     if (!file.is_open()) {
         cerr << "ERROR: cannot open file " << filename << endl;
         exit(1);
     }
+
     string line;
     if (!getline(file, line)) {
         cerr << "ERROR: empty file " << filename << endl;
         exit(1);
-    } // header'ı yut
+    }
+
     while (getline(file, line)) {
         line = trim(line);
         if (line.empty()) continue;
@@ -91,10 +95,11 @@ vector<ArrivalData> readArrivalDataFromCSV(const string& filename) {
         getline(ss, seg, ',');
         int t = stoi(trim(seg));
         getline(ss, seg, ',');
-        double p = stod(trim(seg));
-        raw_data.push_back({t, p});
+        double prob = stod(trim(seg));
+        prob_sum += prob;
+        raw_data.push_back({t, prob});
     }
-    return raw_data;
+    return {raw_data, prob_sum};
 }
 
 vector<CumulativeData> calculateCumulative(const vector<ArrivalData>& data) {
@@ -106,7 +111,6 @@ vector<CumulativeData> calculateCumulative(const vector<ArrivalData>& data) {
         out.push_back({it.time, sum});
     }
     if (!out.empty()) {
-        // minik kayan nokta hataları için clamp
         if (sum > 0.999999 && sum < 1.000001) out.back().cumulative_prob = 1.0;
     }
     return out;
@@ -144,14 +148,14 @@ vector<int> createArrivalTimes(const vector<int>& inter_arrival_times) {
     return arrival_times;
 }
 
-// ----------------- SERVICE tarafı: çoklu server parser + örnekleme -----------------
+// ----------------- SERVICE -----------------
 struct ServerSpec {
     string name;
     vector<ArrivalData> dist;          // (time, prob)
-    vector<CumulativeData> cumulative; // kümülatif
+    vector<CumulativeData> cumulative;
+    double prob_sum;
 };
 
-// services.csv dosyasını okur: server adı blok başlığı, altı (time,prob) satırları
 unordered_map<string, ServerSpec> readServiceDataFromCSV(const string& filename) {
     ifstream file(filename);
     if (!file.is_open()) {
@@ -178,7 +182,7 @@ unordered_map<string, ServerSpec> readServiceDataFromCSV(const string& filename)
         if (line.find(',') == string::npos) {
             current = line;
             if (servers.find(current) == servers.end()) {
-                servers[current] = ServerSpec{current, {}, {}};
+                servers[current] = ServerSpec{current, {}, {}, 0.0};
             }
             continue;
         }
@@ -194,7 +198,9 @@ unordered_map<string, ServerSpec> readServiceDataFromCSV(const string& filename)
         if (!getline(ss, seg2, ',')) continue;
         int t = stoi(trim(seg1));
         double p = stod(trim(seg2));
+        
         servers[current].dist.push_back({t, p});
+        servers[current].prob_sum += p;
     }
 
     for (auto& kv : servers) {
@@ -242,6 +248,44 @@ void handle_arrivals(int clock, list<Event>& FEL, queue<Customer>& waiting_list,
 
 // ----------------------------------- main -----------------------------------
 int main() {
+    mt19937 gen(42); //her seferinde sabit randomları üretiyor debug için uygun sonra değişmesi lazım
+
+    const string ARRIVALS_FILE = "config/arrivals.csv";
+    const string SERVICES_FILE = "config/services.csv";
+
+    auto arrival_result = readArrivalDataFromCSV(ARRIVALS_FILE);
+    vector<ArrivalData> raw_arrival_data = arrival_result.first;
+    double arrival_prob_sum = arrival_result.second;
+
+    auto servers = readServiceDataFromCSV(SERVICES_FILE);
+
+    bool probabilities_are_valid = true;
+    const double EPSILON = 0.001;
+
+    if (abs(arrival_prob_sum - 1.0) > EPSILON) {
+        cerr << "FATAL VALIDATION ERROR in '" << ARRIVALS_FILE << "':" << endl;
+        cerr << "  Probabilities must sum to 1.0, but they sum to " 
+             << fixed << setprecision(4) << arrival_prob_sum << "." << endl;
+        probabilities_are_valid = false;
+    }
+
+    for (const auto& kv : servers) {
+        string server_name = kv.first;
+        double server_prob_sum = kv.second.prob_sum;
+        if (abs(server_prob_sum - 1.0) > EPSILON) {
+            cerr << "FATAL VALIDATION ERROR in '" << SERVICES_FILE << "' (Server: " << server_name << "):" << endl;
+            cerr << "  Probabilities must sum to 1.0, but they sum to "
+                 << fixed << setprecision(4) << server_prob_sum << "." << endl;
+            probabilities_are_valid = false;
+        }
+    }
+
+    if (!probabilities_are_valid) {
+        cerr << "\nPlease fix the probability values in the .csv files and try again." << endl;
+        return 1;
+    }
+
+    // --- Logs ---
 
     auto now = chrono::system_clock::now();
     auto in_time_t = chrono::system_clock::to_time_t(now);
@@ -258,15 +302,6 @@ int main() {
     }
 
     //----------------------------------- Phase-1 Initialize -----------------------------------
-    
-    mt19937 gen(42); //her seferinde sabit randomları üretiyor debug için uygun sonra değişmesi lazım
-
-    const string ARRIVALS_FILE = "config/arrivals.csv";
-    const string SERVICES_FILE = "config/services.csv";
-
-    
-    auto raw_arrival_data = readArrivalDataFromCSV(ARRIVALS_FILE);
-    auto servers = readServiceDataFromCSV(SERVICES_FILE);
 
     cout << "Multi-Server Queue Simulation - CMPE 412\n\n";
     cout << "Logging all output to: " << log_filename << "\n" << endl;
@@ -344,7 +379,7 @@ int main() {
         server_states[server_name] = Server{server_name, IDLE, -1};
     }
 
-    for(int i = 0; i < arrival_times.size(); ++i){
+    for(unsigned int i = 0; i < arrival_times.size(); ++i){
         int customer_id = i;
         int customer_arrival_time = arrival_times[i];
 

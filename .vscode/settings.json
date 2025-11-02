@@ -8,6 +8,8 @@
         "type_traits": "cpp",
         "xutility": "cpp",
         "iostream": "cpp",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "ostream": "cpp",
+        "iosfwd": "cpp"
     }
 }
