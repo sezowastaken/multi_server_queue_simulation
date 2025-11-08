@@ -1,0 +1,1062 @@
+Multi-Server Queue Simulation - CMPE 412
+
+Customer size: 100
+
+Generated Arrival Times (t=0):
+Cst 1   t=   0 | Cst 2   t=   1 | Cst 3   t=   5 | Cst 4   t=   8 | Cst 5   t=  10 | Cst 6   t=  11 | Cst 7   t=  14 | Cst 8   t=  16
+Cst 9   t=  17 | Cst 10  t=  21 | Cst 11  t=  22 | Cst 12  t=  26 | Cst 13  t=  32 | Cst 14  t=  33 | Cst 15  t=  39 | Cst 16  t=  42
+Cst 17  t=  45 | Cst 18  t=  46 | Cst 19  t=  47 | Cst 20  t=  50 | Cst 21  t=  52 | Cst 22  t=  53 | Cst 23  t=  59 | Cst 24  t=  61
+Cst 25  t=  62 | Cst 26  t=  65 | Cst 27  t=  67 | Cst 28  t=  73 | Cst 29  t=  76 | Cst 30  t=  81 | Cst 31  t=  85 | Cst 32  t=  88
+Cst 33  t=  89 | Cst 34  t=  95 | Cst 35  t=  98 | Cst 36  t= 100 | Cst 37  t= 101 | Cst 38  t= 103 | Cst 39  t= 105 | Cst 40  t= 109
+Cst 41  t= 112 | Cst 42  t= 117 | Cst 43  t= 118 | Cst 44  t= 120 | Cst 45  t= 121 | Cst 46  t= 125 | Cst 47  t= 127 | Cst 48  t= 129
+Cst 49  t= 132 | Cst 50  t= 133 | Cst 51  t= 138 | Cst 52  t= 140 | Cst 53  t= 142 | Cst 54  t= 148 | Cst 55  t= 152 | Cst 56  t= 154
+Cst 57  t= 157 | Cst 58  t= 160 | Cst 59  t= 166 | Cst 60  t= 171 | Cst 61  t= 175 | Cst 62  t= 178 | Cst 63  t= 181 | Cst 64  t= 187
+Cst 65  t= 190 | Cst 66  t= 192 | Cst 67  t= 194 | Cst 68  t= 195 | Cst 69  t= 196 | Cst 70  t= 198 | Cst 71  t= 200 | Cst 72  t= 202
+Cst 73  t= 203 | Cst 74  t= 204 | Cst 75  t= 208 | Cst 76  t= 212 | Cst 77  t= 215 | Cst 78  t= 221 | Cst 79  t= 225 | Cst 80  t= 231
+Cst 81  t= 236 | Cst 82  t= 238 | Cst 83  t= 239 | Cst 84  t= 241 | Cst 85  t= 245 | Cst 86  t= 249 | Cst 87  t= 252 | Cst 88  t= 254
+Cst 89  t= 257 | Cst 90  t= 259 | Cst 91  t= 265 | Cst 92  t= 270 | Cst 93  t= 274 | Cst 94  t= 276 | Cst 95  t= 278 | Cst 96  t= 279
+Cst 97  t= 283 | Cst 98  t= 284 | Cst 99  t= 286 | Cst 100 t= 288
+
+Service Times for Each Server
+
+Server: sabo
+---------------------------
+Cst 1   s= 5 | Cst 2   s= 3 | Cst 3   s= 4 | Cst 4   s= 4 | Cst 5   s= 2 | Cst 6   s= 4 | Cst 7   s= 3 | Cst 8   s= 3
+Cst 9   s= 5 | Cst 10  s= 4 | Cst 11  s= 4 | Cst 12  s= 5 | Cst 13  s= 4 | Cst 14  s= 3 | Cst 15  s= 2 | Cst 16  s= 3
+Cst 17  s= 3 | Cst 18  s= 3 | Cst 19  s= 5 | Cst 20  s= 3 | Cst 21  s= 2 | Cst 22  s= 3 | Cst 23  s= 5 | Cst 24  s= 3
+Cst 25  s= 4 | Cst 26  s= 2 | Cst 27  s= 3 | Cst 28  s= 3 | Cst 29  s= 2 | Cst 30  s= 3 | Cst 31  s= 3 | Cst 32  s= 4
+Cst 33  s= 3 | Cst 34  s= 3 | Cst 35  s= 2 | Cst 36  s= 3 | Cst 37  s= 4 | Cst 38  s= 3 | Cst 39  s= 2 | Cst 40  s= 3
+Cst 41  s= 3 | Cst 42  s= 4 | Cst 43  s= 4 | Cst 44  s= 2 | Cst 45  s= 5 | Cst 46  s= 3 | Cst 47  s= 5 | Cst 48  s= 3
+Cst 49  s= 2 | Cst 50  s= 3 | Cst 51  s= 4 | Cst 52  s= 4 | Cst 53  s= 3 | Cst 54  s= 3 | Cst 55  s= 4 | Cst 56  s= 4
+Cst 57  s= 2 | Cst 58  s= 3 | Cst 59  s= 3 | Cst 60  s= 4 | Cst 61  s= 3 | Cst 62  s= 5 | Cst 63  s= 3 | Cst 64  s= 4
+Cst 65  s= 4 | Cst 66  s= 2 | Cst 67  s= 3 | Cst 68  s= 4 | Cst 69  s= 5 | Cst 70  s= 3 | Cst 71  s= 3 | Cst 72  s= 4
+Cst 73  s= 4 | Cst 74  s= 3 | Cst 75  s= 2 | Cst 76  s= 5 | Cst 77  s= 3 | Cst 78  s= 3 | Cst 79  s= 4 | Cst 80  s= 4
+Cst 81  s= 4 | Cst 82  s= 3 | Cst 83  s= 3 | Cst 84  s= 4 | Cst 85  s= 3 | Cst 86  s= 2 | Cst 87  s= 5 | Cst 88  s= 3
+Cst 89  s= 3 | Cst 90  s= 5 | Cst 91  s= 5 | Cst 92  s= 4 | Cst 93  s= 5 | Cst 94  s= 2 | Cst 95  s= 3 | Cst 96  s= 4
+Cst 97  s= 4 | Cst 98  s= 5 | Cst 99  s= 3 | Cst 100 s= 5
+
+
+
+--- SIMULATION STARTING ---
+  [SETUP] FEL initialized with 100 ARRIVAL events.
+  [SETUP] All 1 servers initialized as IDLE.
+
+--- [CLOCK: 0] ---
+  ARRIVAL:   Customer 1 arrived at t=0.
+
+--- [CLOCK: 1] ---
+  ARRIVAL:   Customer 2 arrived at t=1.
+
+--- [CLOCK: 2] ---
+
+--- [CLOCK: 3] ---
+
+--- [CLOCK: 4] ---
+
+--- [CLOCK: 5] ---
+  DEPARTURE: Customer 1 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 2 (waited 4 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=8)
+  ARRIVAL:   Customer 3 arrived at t=5.
+
+--- [CLOCK: 6] ---
+
+--- [CLOCK: 7] ---
+
+--- [CLOCK: 8] ---
+  DEPARTURE: Customer 2 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 3 (waited 3 min) assigned to (Best fit) server 'sabo'. Service time: 4 min. (Finishes at t=12)
+  ARRIVAL:   Customer 4 arrived at t=8.
+
+--- [CLOCK: 9] ---
+
+--- [CLOCK: 10] ---
+  ARRIVAL:   Customer 5 arrived at t=10.
+
+--- [CLOCK: 11] ---
+  ARRIVAL:   Customer 6 arrived at t=11.
+
+--- [CLOCK: 12] ---
+  DEPARTURE: Customer 3 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 4 (waited 4 min) assigned to (Best fit) server 'sabo'. Service time: 4 min. (Finishes at t=16)
+
+--- [CLOCK: 13] ---
+
+--- [CLOCK: 14] ---
+  ARRIVAL:   Customer 7 arrived at t=14.
+
+--- [CLOCK: 15] ---
+
+--- [CLOCK: 16] ---
+  DEPARTURE: Customer 4 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 5 (waited 6 min) assigned to (Best fit) server 'sabo'. Service time: 2 min. (Finishes at t=18)
+  ARRIVAL:   Customer 8 arrived at t=16.
+
+--- [CLOCK: 17] ---
+  ARRIVAL:   Customer 9 arrived at t=17.
+
+--- [CLOCK: 18] ---
+  DEPARTURE: Customer 5 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 6 (waited 7 min) assigned to (Best fit) server 'sabo'. Service time: 4 min. (Finishes at t=22)
+
+--- [CLOCK: 19] ---
+
+--- [CLOCK: 20] ---
+
+--- [CLOCK: 21] ---
+  ARRIVAL:   Customer 10 arrived at t=21.
+
+--- [CLOCK: 22] ---
+  DEPARTURE: Customer 6 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 7 (waited 8 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=25)
+  ARRIVAL:   Customer 11 arrived at t=22.
+
+--- [CLOCK: 23] ---
+
+--- [CLOCK: 24] ---
+
+--- [CLOCK: 25] ---
+  DEPARTURE: Customer 7 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 8 (waited 9 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=28)
+
+--- [CLOCK: 26] ---
+  ARRIVAL:   Customer 12 arrived at t=26.
+
+--- [CLOCK: 27] ---
+
+--- [CLOCK: 28] ---
+  DEPARTURE: Customer 8 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 9 (waited 11 min) assigned to (Best fit) server 'sabo'. Service time: 5 min. (Finishes at t=33)
+
+--- [CLOCK: 29] ---
+
+--- [CLOCK: 30] ---
+
+--- [CLOCK: 31] ---
+
+--- [CLOCK: 32] ---
+  ARRIVAL:   Customer 13 arrived at t=32.
+
+--- [CLOCK: 33] ---
+  DEPARTURE: Customer 9 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 10 (waited 12 min) assigned to (Best fit) server 'sabo'. Service time: 4 min. (Finishes at t=37)
+  ARRIVAL:   Customer 14 arrived at t=33.
+
+--- [CLOCK: 34] ---
+
+--- [CLOCK: 35] ---
+
+--- [CLOCK: 36] ---
+
+--- [CLOCK: 37] ---
+  DEPARTURE: Customer 10 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 11 (waited 15 min) assigned to (Best fit) server 'sabo'. Service time: 4 min. (Finishes at t=41)
+
+--- [CLOCK: 38] ---
+
+--- [CLOCK: 39] ---
+  ARRIVAL:   Customer 15 arrived at t=39.
+
+--- [CLOCK: 40] ---
+
+--- [CLOCK: 41] ---
+  DEPARTURE: Customer 11 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 12 (waited 15 min) assigned to (Best fit) server 'sabo'. Service time: 5 min. (Finishes at t=46)
+
+--- [CLOCK: 42] ---
+  ARRIVAL:   Customer 16 arrived at t=42.
+
+--- [CLOCK: 43] ---
+
+--- [CLOCK: 44] ---
+
+--- [CLOCK: 45] ---
+  ARRIVAL:   Customer 17 arrived at t=45.
+
+--- [CLOCK: 46] ---
+  DEPARTURE: Customer 12 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 13 (waited 14 min) assigned to (Best fit) server 'sabo'. Service time: 4 min. (Finishes at t=50)
+  ARRIVAL:   Customer 18 arrived at t=46.
+
+--- [CLOCK: 47] ---
+  ARRIVAL:   Customer 19 arrived at t=47.
+
+--- [CLOCK: 48] ---
+
+--- [CLOCK: 49] ---
+
+--- [CLOCK: 50] ---
+  DEPARTURE: Customer 13 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 14 (waited 17 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=53)
+  ARRIVAL:   Customer 20 arrived at t=50.
+
+--- [CLOCK: 51] ---
+
+--- [CLOCK: 52] ---
+  ARRIVAL:   Customer 21 arrived at t=52.
+
+--- [CLOCK: 53] ---
+  DEPARTURE: Customer 14 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 15 (waited 14 min) assigned to (Best fit) server 'sabo'. Service time: 2 min. (Finishes at t=55)
+  ARRIVAL:   Customer 22 arrived at t=53.
+
+--- [CLOCK: 54] ---
+
+--- [CLOCK: 55] ---
+  DEPARTURE: Customer 15 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 16 (waited 13 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=58)
+
+--- [CLOCK: 56] ---
+
+--- [CLOCK: 57] ---
+
+--- [CLOCK: 58] ---
+  DEPARTURE: Customer 16 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 17 (waited 13 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=61)
+
+--- [CLOCK: 59] ---
+  ARRIVAL:   Customer 23 arrived at t=59.
+
+--- [CLOCK: 60] ---
+
+--- [CLOCK: 61] ---
+  DEPARTURE: Customer 17 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 18 (waited 15 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=64)
+  ARRIVAL:   Customer 24 arrived at t=61.
+
+--- [CLOCK: 62] ---
+  ARRIVAL:   Customer 25 arrived at t=62.
+
+--- [CLOCK: 63] ---
+
+--- [CLOCK: 64] ---
+  DEPARTURE: Customer 18 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 19 (waited 17 min) assigned to (Best fit) server 'sabo'. Service time: 5 min. (Finishes at t=69)
+
+--- [CLOCK: 65] ---
+  ARRIVAL:   Customer 26 arrived at t=65.
+
+--- [CLOCK: 66] ---
+
+--- [CLOCK: 67] ---
+  ARRIVAL:   Customer 27 arrived at t=67.
+
+--- [CLOCK: 68] ---
+
+--- [CLOCK: 69] ---
+  DEPARTURE: Customer 19 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 20 (waited 19 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=72)
+
+--- [CLOCK: 70] ---
+
+--- [CLOCK: 71] ---
+
+--- [CLOCK: 72] ---
+  DEPARTURE: Customer 20 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 21 (waited 20 min) assigned to (Best fit) server 'sabo'. Service time: 2 min. (Finishes at t=74)
+
+--- [CLOCK: 73] ---
+  ARRIVAL:   Customer 28 arrived at t=73.
+
+--- [CLOCK: 74] ---
+  DEPARTURE: Customer 21 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 22 (waited 21 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=77)
+
+--- [CLOCK: 75] ---
+
+--- [CLOCK: 76] ---
+  ARRIVAL:   Customer 29 arrived at t=76.
+
+--- [CLOCK: 77] ---
+  DEPARTURE: Customer 22 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 23 (waited 18 min) assigned to (Best fit) server 'sabo'. Service time: 5 min. (Finishes at t=82)
+
+--- [CLOCK: 78] ---
+
+--- [CLOCK: 79] ---
+
+--- [CLOCK: 80] ---
+
+--- [CLOCK: 81] ---
+  ARRIVAL:   Customer 30 arrived at t=81.
+
+--- [CLOCK: 82] ---
+  DEPARTURE: Customer 23 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 24 (waited 21 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=85)
+
+--- [CLOCK: 83] ---
+
+--- [CLOCK: 84] ---
+
+--- [CLOCK: 85] ---
+  DEPARTURE: Customer 24 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 25 (waited 23 min) assigned to (Best fit) server 'sabo'. Service time: 4 min. (Finishes at t=89)
+  ARRIVAL:   Customer 31 arrived at t=85.
+
+--- [CLOCK: 86] ---
+
+--- [CLOCK: 87] ---
+
+--- [CLOCK: 88] ---
+  ARRIVAL:   Customer 32 arrived at t=88.
+
+--- [CLOCK: 89] ---
+  DEPARTURE: Customer 25 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 26 (waited 24 min) assigned to (Best fit) server 'sabo'. Service time: 2 min. (Finishes at t=91)
+  ARRIVAL:   Customer 33 arrived at t=89.
+
+--- [CLOCK: 90] ---
+
+--- [CLOCK: 91] ---
+  DEPARTURE: Customer 26 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 27 (waited 24 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=94)
+
+--- [CLOCK: 92] ---
+
+--- [CLOCK: 93] ---
+
+--- [CLOCK: 94] ---
+  DEPARTURE: Customer 27 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 28 (waited 21 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=97)
+
+--- [CLOCK: 95] ---
+  ARRIVAL:   Customer 34 arrived at t=95.
+
+--- [CLOCK: 96] ---
+
+--- [CLOCK: 97] ---
+  DEPARTURE: Customer 28 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 29 (waited 21 min) assigned to (Best fit) server 'sabo'. Service time: 2 min. (Finishes at t=99)
+
+--- [CLOCK: 98] ---
+  ARRIVAL:   Customer 35 arrived at t=98.
+
+--- [CLOCK: 99] ---
+  DEPARTURE: Customer 29 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 30 (waited 18 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=102)
+
+--- [CLOCK: 100] ---
+  ARRIVAL:   Customer 36 arrived at t=100.
+
+--- [CLOCK: 101] ---
+  ARRIVAL:   Customer 37 arrived at t=101.
+
+--- [CLOCK: 102] ---
+  DEPARTURE: Customer 30 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 31 (waited 17 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=105)
+
+--- [CLOCK: 103] ---
+  ARRIVAL:   Customer 38 arrived at t=103.
+
+--- [CLOCK: 104] ---
+
+--- [CLOCK: 105] ---
+  DEPARTURE: Customer 31 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 32 (waited 17 min) assigned to (Best fit) server 'sabo'. Service time: 4 min. (Finishes at t=109)
+  ARRIVAL:   Customer 39 arrived at t=105.
+
+--- [CLOCK: 106] ---
+
+--- [CLOCK: 107] ---
+
+--- [CLOCK: 108] ---
+
+--- [CLOCK: 109] ---
+  DEPARTURE: Customer 32 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 33 (waited 20 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=112)
+  ARRIVAL:   Customer 40 arrived at t=109.
+
+--- [CLOCK: 110] ---
+
+--- [CLOCK: 111] ---
+
+--- [CLOCK: 112] ---
+  DEPARTURE: Customer 33 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 34 (waited 17 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=115)
+  ARRIVAL:   Customer 41 arrived at t=112.
+
+--- [CLOCK: 113] ---
+
+--- [CLOCK: 114] ---
+
+--- [CLOCK: 115] ---
+  DEPARTURE: Customer 34 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 35 (waited 17 min) assigned to (Best fit) server 'sabo'. Service time: 2 min. (Finishes at t=117)
+
+--- [CLOCK: 116] ---
+
+--- [CLOCK: 117] ---
+  DEPARTURE: Customer 35 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 36 (waited 17 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=120)
+  ARRIVAL:   Customer 42 arrived at t=117.
+
+--- [CLOCK: 118] ---
+  ARRIVAL:   Customer 43 arrived at t=118.
+
+--- [CLOCK: 119] ---
+
+--- [CLOCK: 120] ---
+  DEPARTURE: Customer 36 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 37 (waited 19 min) assigned to (Best fit) server 'sabo'. Service time: 4 min. (Finishes at t=124)
+  ARRIVAL:   Customer 44 arrived at t=120.
+
+--- [CLOCK: 121] ---
+  ARRIVAL:   Customer 45 arrived at t=121.
+
+--- [CLOCK: 122] ---
+
+--- [CLOCK: 123] ---
+
+--- [CLOCK: 124] ---
+  DEPARTURE: Customer 37 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 38 (waited 21 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=127)
+
+--- [CLOCK: 125] ---
+  ARRIVAL:   Customer 46 arrived at t=125.
+
+--- [CLOCK: 126] ---
+
+--- [CLOCK: 127] ---
+  DEPARTURE: Customer 38 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 39 (waited 22 min) assigned to (Best fit) server 'sabo'. Service time: 2 min. (Finishes at t=129)
+  ARRIVAL:   Customer 47 arrived at t=127.
+
+--- [CLOCK: 128] ---
+
+--- [CLOCK: 129] ---
+  DEPARTURE: Customer 39 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 40 (waited 20 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=132)
+  ARRIVAL:   Customer 48 arrived at t=129.
+
+--- [CLOCK: 130] ---
+
+--- [CLOCK: 131] ---
+
+--- [CLOCK: 132] ---
+  DEPARTURE: Customer 40 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 41 (waited 20 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=135)
+  ARRIVAL:   Customer 49 arrived at t=132.
+
+--- [CLOCK: 133] ---
+  ARRIVAL:   Customer 50 arrived at t=133.
+
+--- [CLOCK: 134] ---
+
+--- [CLOCK: 135] ---
+  DEPARTURE: Customer 41 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 42 (waited 18 min) assigned to (Best fit) server 'sabo'. Service time: 4 min. (Finishes at t=139)
+
+--- [CLOCK: 136] ---
+
+--- [CLOCK: 137] ---
+
+--- [CLOCK: 138] ---
+  ARRIVAL:   Customer 51 arrived at t=138.
+
+--- [CLOCK: 139] ---
+  DEPARTURE: Customer 42 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 43 (waited 21 min) assigned to (Best fit) server 'sabo'. Service time: 4 min. (Finishes at t=143)
+
+--- [CLOCK: 140] ---
+  ARRIVAL:   Customer 52 arrived at t=140.
+
+--- [CLOCK: 141] ---
+
+--- [CLOCK: 142] ---
+  ARRIVAL:   Customer 53 arrived at t=142.
+
+--- [CLOCK: 143] ---
+  DEPARTURE: Customer 43 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 44 (waited 23 min) assigned to (Best fit) server 'sabo'. Service time: 2 min. (Finishes at t=145)
+
+--- [CLOCK: 144] ---
+
+--- [CLOCK: 145] ---
+  DEPARTURE: Customer 44 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 45 (waited 24 min) assigned to (Best fit) server 'sabo'. Service time: 5 min. (Finishes at t=150)
+
+--- [CLOCK: 146] ---
+
+--- [CLOCK: 147] ---
+
+--- [CLOCK: 148] ---
+  ARRIVAL:   Customer 54 arrived at t=148.
+
+--- [CLOCK: 149] ---
+
+--- [CLOCK: 150] ---
+  DEPARTURE: Customer 45 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 46 (waited 25 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=153)
+
+--- [CLOCK: 151] ---
+
+--- [CLOCK: 152] ---
+  ARRIVAL:   Customer 55 arrived at t=152.
+
+--- [CLOCK: 153] ---
+  DEPARTURE: Customer 46 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 47 (waited 26 min) assigned to (Best fit) server 'sabo'. Service time: 5 min. (Finishes at t=158)
+
+--- [CLOCK: 154] ---
+  ARRIVAL:   Customer 56 arrived at t=154.
+
+--- [CLOCK: 155] ---
+
+--- [CLOCK: 156] ---
+
+--- [CLOCK: 157] ---
+  ARRIVAL:   Customer 57 arrived at t=157.
+
+--- [CLOCK: 158] ---
+  DEPARTURE: Customer 47 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 48 (waited 29 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=161)
+
+--- [CLOCK: 159] ---
+
+--- [CLOCK: 160] ---
+  ARRIVAL:   Customer 58 arrived at t=160.
+
+--- [CLOCK: 161] ---
+  DEPARTURE: Customer 48 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 49 (waited 29 min) assigned to (Best fit) server 'sabo'. Service time: 2 min. (Finishes at t=163)
+
+--- [CLOCK: 162] ---
+
+--- [CLOCK: 163] ---
+  DEPARTURE: Customer 49 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 50 (waited 30 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=166)
+
+--- [CLOCK: 164] ---
+
+--- [CLOCK: 165] ---
+
+--- [CLOCK: 166] ---
+  DEPARTURE: Customer 50 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 51 (waited 28 min) assigned to (Best fit) server 'sabo'. Service time: 4 min. (Finishes at t=170)
+  ARRIVAL:   Customer 59 arrived at t=166.
+
+--- [CLOCK: 167] ---
+
+--- [CLOCK: 168] ---
+
+--- [CLOCK: 169] ---
+
+--- [CLOCK: 170] ---
+  DEPARTURE: Customer 51 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 52 (waited 30 min) assigned to (Best fit) server 'sabo'. Service time: 4 min. (Finishes at t=174)
+
+--- [CLOCK: 171] ---
+  ARRIVAL:   Customer 60 arrived at t=171.
+
+--- [CLOCK: 172] ---
+
+--- [CLOCK: 173] ---
+
+--- [CLOCK: 174] ---
+  DEPARTURE: Customer 52 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 53 (waited 32 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=177)
+
+--- [CLOCK: 175] ---
+  ARRIVAL:   Customer 61 arrived at t=175.
+
+--- [CLOCK: 176] ---
+
+--- [CLOCK: 177] ---
+  DEPARTURE: Customer 53 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 54 (waited 29 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=180)
+
+--- [CLOCK: 178] ---
+  ARRIVAL:   Customer 62 arrived at t=178.
+
+--- [CLOCK: 179] ---
+
+--- [CLOCK: 180] ---
+  DEPARTURE: Customer 54 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 55 (waited 28 min) assigned to (Best fit) server 'sabo'. Service time: 4 min. (Finishes at t=184)
+
+--- [CLOCK: 181] ---
+  ARRIVAL:   Customer 63 arrived at t=181.
+
+--- [CLOCK: 182] ---
+
+--- [CLOCK: 183] ---
+
+--- [CLOCK: 184] ---
+  DEPARTURE: Customer 55 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 56 (waited 30 min) assigned to (Best fit) server 'sabo'. Service time: 4 min. (Finishes at t=188)
+
+--- [CLOCK: 185] ---
+
+--- [CLOCK: 186] ---
+
+--- [CLOCK: 187] ---
+  ARRIVAL:   Customer 64 arrived at t=187.
+
+--- [CLOCK: 188] ---
+  DEPARTURE: Customer 56 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 57 (waited 31 min) assigned to (Best fit) server 'sabo'. Service time: 2 min. (Finishes at t=190)
+
+--- [CLOCK: 189] ---
+
+--- [CLOCK: 190] ---
+  DEPARTURE: Customer 57 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 58 (waited 30 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=193)
+  ARRIVAL:   Customer 65 arrived at t=190.
+
+--- [CLOCK: 191] ---
+
+--- [CLOCK: 192] ---
+  ARRIVAL:   Customer 66 arrived at t=192.
+
+--- [CLOCK: 193] ---
+  DEPARTURE: Customer 58 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 59 (waited 27 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=196)
+
+--- [CLOCK: 194] ---
+  ARRIVAL:   Customer 67 arrived at t=194.
+
+--- [CLOCK: 195] ---
+  ARRIVAL:   Customer 68 arrived at t=195.
+
+--- [CLOCK: 196] ---
+  DEPARTURE: Customer 59 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 60 (waited 25 min) assigned to (Best fit) server 'sabo'. Service time: 4 min. (Finishes at t=200)
+  ARRIVAL:   Customer 69 arrived at t=196.
+
+--- [CLOCK: 197] ---
+
+--- [CLOCK: 198] ---
+  ARRIVAL:   Customer 70 arrived at t=198.
+
+--- [CLOCK: 199] ---
+
+--- [CLOCK: 200] ---
+  DEPARTURE: Customer 60 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 61 (waited 25 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=203)
+  ARRIVAL:   Customer 71 arrived at t=200.
+
+--- [CLOCK: 201] ---
+
+--- [CLOCK: 202] ---
+  ARRIVAL:   Customer 72 arrived at t=202.
+
+--- [CLOCK: 203] ---
+  DEPARTURE: Customer 61 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 62 (waited 25 min) assigned to (Best fit) server 'sabo'. Service time: 5 min. (Finishes at t=208)
+  ARRIVAL:   Customer 73 arrived at t=203.
+
+--- [CLOCK: 204] ---
+  ARRIVAL:   Customer 74 arrived at t=204.
+
+--- [CLOCK: 205] ---
+
+--- [CLOCK: 206] ---
+
+--- [CLOCK: 207] ---
+
+--- [CLOCK: 208] ---
+  DEPARTURE: Customer 62 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 63 (waited 27 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=211)
+  ARRIVAL:   Customer 75 arrived at t=208.
+
+--- [CLOCK: 209] ---
+
+--- [CLOCK: 210] ---
+
+--- [CLOCK: 211] ---
+  DEPARTURE: Customer 63 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 64 (waited 24 min) assigned to (Best fit) server 'sabo'. Service time: 4 min. (Finishes at t=215)
+
+--- [CLOCK: 212] ---
+  ARRIVAL:   Customer 76 arrived at t=212.
+
+--- [CLOCK: 213] ---
+
+--- [CLOCK: 214] ---
+
+--- [CLOCK: 215] ---
+  DEPARTURE: Customer 64 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 65 (waited 25 min) assigned to (Best fit) server 'sabo'. Service time: 4 min. (Finishes at t=219)
+  ARRIVAL:   Customer 77 arrived at t=215.
+
+--- [CLOCK: 216] ---
+
+--- [CLOCK: 217] ---
+
+--- [CLOCK: 218] ---
+
+--- [CLOCK: 219] ---
+  DEPARTURE: Customer 65 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 66 (waited 27 min) assigned to (Best fit) server 'sabo'. Service time: 2 min. (Finishes at t=221)
+
+--- [CLOCK: 220] ---
+
+--- [CLOCK: 221] ---
+  DEPARTURE: Customer 66 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 67 (waited 27 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=224)
+  ARRIVAL:   Customer 78 arrived at t=221.
+
+--- [CLOCK: 222] ---
+
+--- [CLOCK: 223] ---
+
+--- [CLOCK: 224] ---
+  DEPARTURE: Customer 67 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 68 (waited 29 min) assigned to (Best fit) server 'sabo'. Service time: 4 min. (Finishes at t=228)
+
+--- [CLOCK: 225] ---
+  ARRIVAL:   Customer 79 arrived at t=225.
+
+--- [CLOCK: 226] ---
+
+--- [CLOCK: 227] ---
+
+--- [CLOCK: 228] ---
+  DEPARTURE: Customer 68 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 69 (waited 32 min) assigned to (Best fit) server 'sabo'. Service time: 5 min. (Finishes at t=233)
+
+--- [CLOCK: 229] ---
+
+--- [CLOCK: 230] ---
+
+--- [CLOCK: 231] ---
+  ARRIVAL:   Customer 80 arrived at t=231.
+
+--- [CLOCK: 232] ---
+
+--- [CLOCK: 233] ---
+  DEPARTURE: Customer 69 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 70 (waited 35 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=236)
+
+--- [CLOCK: 234] ---
+
+--- [CLOCK: 235] ---
+
+--- [CLOCK: 236] ---
+  DEPARTURE: Customer 70 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 71 (waited 36 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=239)
+  ARRIVAL:   Customer 81 arrived at t=236.
+
+--- [CLOCK: 237] ---
+
+--- [CLOCK: 238] ---
+  ARRIVAL:   Customer 82 arrived at t=238.
+
+--- [CLOCK: 239] ---
+  DEPARTURE: Customer 71 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 72 (waited 37 min) assigned to (Best fit) server 'sabo'. Service time: 4 min. (Finishes at t=243)
+  ARRIVAL:   Customer 83 arrived at t=239.
+
+--- [CLOCK: 240] ---
+
+--- [CLOCK: 241] ---
+  ARRIVAL:   Customer 84 arrived at t=241.
+
+--- [CLOCK: 242] ---
+
+--- [CLOCK: 243] ---
+  DEPARTURE: Customer 72 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 73 (waited 40 min) assigned to (Best fit) server 'sabo'. Service time: 4 min. (Finishes at t=247)
+
+--- [CLOCK: 244] ---
+
+--- [CLOCK: 245] ---
+  ARRIVAL:   Customer 85 arrived at t=245.
+
+--- [CLOCK: 246] ---
+
+--- [CLOCK: 247] ---
+  DEPARTURE: Customer 73 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 74 (waited 43 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=250)
+
+--- [CLOCK: 248] ---
+
+--- [CLOCK: 249] ---
+  ARRIVAL:   Customer 86 arrived at t=249.
+
+--- [CLOCK: 250] ---
+  DEPARTURE: Customer 74 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 75 (waited 42 min) assigned to (Best fit) server 'sabo'. Service time: 2 min. (Finishes at t=252)
+
+--- [CLOCK: 251] ---
+
+--- [CLOCK: 252] ---
+  DEPARTURE: Customer 75 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 76 (waited 40 min) assigned to (Best fit) server 'sabo'. Service time: 5 min. (Finishes at t=257)
+  ARRIVAL:   Customer 87 arrived at t=252.
+
+--- [CLOCK: 253] ---
+
+--- [CLOCK: 254] ---
+  ARRIVAL:   Customer 88 arrived at t=254.
+
+--- [CLOCK: 255] ---
+
+--- [CLOCK: 256] ---
+
+--- [CLOCK: 257] ---
+  DEPARTURE: Customer 76 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 77 (waited 42 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=260)
+  ARRIVAL:   Customer 89 arrived at t=257.
+
+--- [CLOCK: 258] ---
+
+--- [CLOCK: 259] ---
+  ARRIVAL:   Customer 90 arrived at t=259.
+
+--- [CLOCK: 260] ---
+  DEPARTURE: Customer 77 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 78 (waited 39 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=263)
+
+--- [CLOCK: 261] ---
+
+--- [CLOCK: 262] ---
+
+--- [CLOCK: 263] ---
+  DEPARTURE: Customer 78 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 79 (waited 38 min) assigned to (Best fit) server 'sabo'. Service time: 4 min. (Finishes at t=267)
+
+--- [CLOCK: 264] ---
+
+--- [CLOCK: 265] ---
+  ARRIVAL:   Customer 91 arrived at t=265.
+
+--- [CLOCK: 266] ---
+
+--- [CLOCK: 267] ---
+  DEPARTURE: Customer 79 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 80 (waited 36 min) assigned to (Best fit) server 'sabo'. Service time: 4 min. (Finishes at t=271)
+
+--- [CLOCK: 268] ---
+
+--- [CLOCK: 269] ---
+
+--- [CLOCK: 270] ---
+  ARRIVAL:   Customer 92 arrived at t=270.
+
+--- [CLOCK: 271] ---
+  DEPARTURE: Customer 80 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 81 (waited 35 min) assigned to (Best fit) server 'sabo'. Service time: 4 min. (Finishes at t=275)
+
+--- [CLOCK: 272] ---
+
+--- [CLOCK: 273] ---
+
+--- [CLOCK: 274] ---
+  ARRIVAL:   Customer 93 arrived at t=274.
+
+--- [CLOCK: 275] ---
+  DEPARTURE: Customer 81 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 82 (waited 37 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=278)
+
+--- [CLOCK: 276] ---
+  ARRIVAL:   Customer 94 arrived at t=276.
+
+--- [CLOCK: 277] ---
+
+--- [CLOCK: 278] ---
+  DEPARTURE: Customer 82 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 83 (waited 39 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=281)
+  ARRIVAL:   Customer 95 arrived at t=278.
+
+--- [CLOCK: 279] ---
+  ARRIVAL:   Customer 96 arrived at t=279.
+
+--- [CLOCK: 280] ---
+
+--- [CLOCK: 281] ---
+  DEPARTURE: Customer 83 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 84 (waited 40 min) assigned to (Best fit) server 'sabo'. Service time: 4 min. (Finishes at t=285)
+
+--- [CLOCK: 282] ---
+
+--- [CLOCK: 283] ---
+  ARRIVAL:   Customer 97 arrived at t=283.
+
+--- [CLOCK: 284] ---
+  ARRIVAL:   Customer 98 arrived at t=284.
+
+--- [CLOCK: 285] ---
+  DEPARTURE: Customer 84 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 85 (waited 40 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=288)
+
+--- [CLOCK: 286] ---
+  ARRIVAL:   Customer 99 arrived at t=286.
+
+--- [CLOCK: 287] ---
+
+--- [CLOCK: 288] ---
+  DEPARTURE: Customer 85 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 86 (waited 39 min) assigned to (Best fit) server 'sabo'. Service time: 2 min. (Finishes at t=290)
+  ARRIVAL:   Customer 100 arrived at t=288.
+
+--- [CLOCK: 289] ---
+
+--- [CLOCK: 290] ---
+  DEPARTURE: Customer 86 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 87 (waited 38 min) assigned to (Best fit) server 'sabo'. Service time: 5 min. (Finishes at t=295)
+
+--- [CLOCK: 291] ---
+
+--- [CLOCK: 292] ---
+
+--- [CLOCK: 293] ---
+
+--- [CLOCK: 294] ---
+
+--- [CLOCK: 295] ---
+  DEPARTURE: Customer 87 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 88 (waited 41 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=298)
+
+--- [CLOCK: 296] ---
+
+--- [CLOCK: 297] ---
+
+--- [CLOCK: 298] ---
+  DEPARTURE: Customer 88 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 89 (waited 41 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=301)
+
+--- [CLOCK: 299] ---
+
+--- [CLOCK: 300] ---
+
+--- [CLOCK: 301] ---
+  DEPARTURE: Customer 89 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 90 (waited 42 min) assigned to (Best fit) server 'sabo'. Service time: 5 min. (Finishes at t=306)
+
+--- [CLOCK: 302] ---
+
+--- [CLOCK: 303] ---
+
+--- [CLOCK: 304] ---
+
+--- [CLOCK: 305] ---
+
+--- [CLOCK: 306] ---
+  DEPARTURE: Customer 90 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 91 (waited 41 min) assigned to (Best fit) server 'sabo'. Service time: 5 min. (Finishes at t=311)
+
+--- [CLOCK: 307] ---
+
+--- [CLOCK: 308] ---
+
+--- [CLOCK: 309] ---
+
+--- [CLOCK: 310] ---
+
+--- [CLOCK: 311] ---
+  DEPARTURE: Customer 91 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 92 (waited 41 min) assigned to (Best fit) server 'sabo'. Service time: 4 min. (Finishes at t=315)
+
+--- [CLOCK: 312] ---
+
+--- [CLOCK: 313] ---
+
+--- [CLOCK: 314] ---
+
+--- [CLOCK: 315] ---
+  DEPARTURE: Customer 92 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 93 (waited 41 min) assigned to (Best fit) server 'sabo'. Service time: 5 min. (Finishes at t=320)
+
+--- [CLOCK: 316] ---
+
+--- [CLOCK: 317] ---
+
+--- [CLOCK: 318] ---
+
+--- [CLOCK: 319] ---
+
+--- [CLOCK: 320] ---
+  DEPARTURE: Customer 93 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 94 (waited 44 min) assigned to (Best fit) server 'sabo'. Service time: 2 min. (Finishes at t=322)
+
+--- [CLOCK: 321] ---
+
+--- [CLOCK: 322] ---
+  DEPARTURE: Customer 94 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 95 (waited 44 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=325)
+
+--- [CLOCK: 323] ---
+
+--- [CLOCK: 324] ---
+
+--- [CLOCK: 325] ---
+  DEPARTURE: Customer 95 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 96 (waited 46 min) assigned to (Best fit) server 'sabo'. Service time: 4 min. (Finishes at t=329)
+
+--- [CLOCK: 326] ---
+
+--- [CLOCK: 327] ---
+
+--- [CLOCK: 328] ---
+
+--- [CLOCK: 329] ---
+  DEPARTURE: Customer 96 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 97 (waited 46 min) assigned to (Best fit) server 'sabo'. Service time: 4 min. (Finishes at t=333)
+
+--- [CLOCK: 330] ---
+
+--- [CLOCK: 331] ---
+
+--- [CLOCK: 332] ---
+
+--- [CLOCK: 333] ---
+  DEPARTURE: Customer 97 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 98 (waited 49 min) assigned to (Best fit) server 'sabo'. Service time: 5 min. (Finishes at t=338)
+
+--- [CLOCK: 334] ---
+
+--- [CLOCK: 335] ---
+
+--- [CLOCK: 336] ---
+
+--- [CLOCK: 337] ---
+
+--- [CLOCK: 338] ---
+  DEPARTURE: Customer 98 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 99 (waited 52 min) assigned to (Best fit) server 'sabo'. Service time: 3 min. (Finishes at t=341)
+
+--- [CLOCK: 339] ---
+
+--- [CLOCK: 340] ---
+
+--- [CLOCK: 341] ---
+  DEPARTURE: Customer 99 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 100 (waited 53 min) assigned to (Best fit) server 'sabo'. Service time: 5 min. (Finishes at t=346)
+
+--- [CLOCK: 342] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 343] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 344] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 345] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 346] ---
+  DEPARTURE: Customer 100 finished service at server 'sabo'.
+
+--- SIMULATION END ---
+Simulation finished at clock: 346
+
+=============================================
+--- SIMULATION STATISTICS & KPIs ---
+=============================================
+
+--- General Statistics ---
+  Total simulation time:     346 minutes
+  Total customers processed: 100
+  Customers who waited:      99
+  Maximum queue length:      14 customers
+
+--- Wait Time KPIs ---
+  Total wait time:           2667.00 minutes
+  Avg. wait time (all cst):  26.67 minutes
+  Avg. wait time (waiting cst):26.94 minutes
+
+--- Server Utilization ---
+  Server [sabo    ]: Busy for  346 min. (Utilization: 100.00%)
+
+=============================================

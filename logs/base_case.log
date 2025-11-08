@@ -1,0 +1,1004 @@
+Multi-Server Queue Simulation - CMPE 412
+
+Customer size: 100
+
+Generated Arrival Times (t=0):
+Cst 1   t=   0 | Cst 2   t=   1 | Cst 3   t=   5 | Cst 4   t=   8 | Cst 5   t=  10 | Cst 6   t=  11 | Cst 7   t=  14 | Cst 8   t=  16
+Cst 9   t=  17 | Cst 10  t=  21 | Cst 11  t=  22 | Cst 12  t=  26 | Cst 13  t=  32 | Cst 14  t=  33 | Cst 15  t=  39 | Cst 16  t=  42
+Cst 17  t=  45 | Cst 18  t=  46 | Cst 19  t=  47 | Cst 20  t=  50 | Cst 21  t=  52 | Cst 22  t=  53 | Cst 23  t=  59 | Cst 24  t=  61
+Cst 25  t=  62 | Cst 26  t=  65 | Cst 27  t=  67 | Cst 28  t=  73 | Cst 29  t=  76 | Cst 30  t=  81 | Cst 31  t=  85 | Cst 32  t=  88
+Cst 33  t=  89 | Cst 34  t=  95 | Cst 35  t=  98 | Cst 36  t= 100 | Cst 37  t= 101 | Cst 38  t= 103 | Cst 39  t= 105 | Cst 40  t= 109
+Cst 41  t= 112 | Cst 42  t= 117 | Cst 43  t= 118 | Cst 44  t= 120 | Cst 45  t= 121 | Cst 46  t= 125 | Cst 47  t= 127 | Cst 48  t= 129
+Cst 49  t= 132 | Cst 50  t= 133 | Cst 51  t= 138 | Cst 52  t= 140 | Cst 53  t= 142 | Cst 54  t= 148 | Cst 55  t= 152 | Cst 56  t= 154
+Cst 57  t= 157 | Cst 58  t= 160 | Cst 59  t= 166 | Cst 60  t= 171 | Cst 61  t= 175 | Cst 62  t= 178 | Cst 63  t= 181 | Cst 64  t= 187
+Cst 65  t= 190 | Cst 66  t= 192 | Cst 67  t= 194 | Cst 68  t= 195 | Cst 69  t= 196 | Cst 70  t= 198 | Cst 71  t= 200 | Cst 72  t= 202
+Cst 73  t= 203 | Cst 74  t= 204 | Cst 75  t= 208 | Cst 76  t= 212 | Cst 77  t= 215 | Cst 78  t= 221 | Cst 79  t= 225 | Cst 80  t= 231
+Cst 81  t= 236 | Cst 82  t= 238 | Cst 83  t= 239 | Cst 84  t= 241 | Cst 85  t= 245 | Cst 86  t= 249 | Cst 87  t= 252 | Cst 88  t= 254
+Cst 89  t= 257 | Cst 90  t= 259 | Cst 91  t= 265 | Cst 92  t= 270 | Cst 93  t= 274 | Cst 94  t= 276 | Cst 95  t= 278 | Cst 96  t= 279
+Cst 97  t= 283 | Cst 98  t= 284 | Cst 99  t= 286 | Cst 100 t= 288
+
+Service Times for Each Server
+
+Server: sabo
+---------------------------
+Cst 1   s= 5 | Cst 2   s= 5 | Cst 3   s= 4 | Cst 4   s= 4 | Cst 5   s= 4 | Cst 6   s= 3 | Cst 7   s= 5 | Cst 8   s= 5
+Cst 9   s= 3 | Cst 10  s= 3 | Cst 11  s= 3 | Cst 12  s= 3 | Cst 13  s= 5 | Cst 14  s= 2 | Cst 15  s= 2 | Cst 16  s= 3
+Cst 17  s= 2 | Cst 18  s= 3 | Cst 19  s= 4 | Cst 20  s= 4 | Cst 21  s= 3 | Cst 22  s= 3 | Cst 23  s= 3 | Cst 24  s= 4
+Cst 25  s= 3 | Cst 26  s= 4 | Cst 27  s= 5 | Cst 28  s= 3 | Cst 29  s= 5 | Cst 30  s= 3 | Cst 31  s= 3 | Cst 32  s= 4
+Cst 33  s= 4 | Cst 34  s= 5 | Cst 35  s= 3 | Cst 36  s= 3 | Cst 37  s= 4 | Cst 38  s= 4 | Cst 39  s= 2 | Cst 40  s= 5
+Cst 41  s= 3 | Cst 42  s= 3 | Cst 43  s= 5 | Cst 44  s= 4 | Cst 45  s= 5 | Cst 46  s= 3 | Cst 47  s= 4 | Cst 48  s= 4
+Cst 49  s= 5 | Cst 50  s= 2 | Cst 51  s= 3 | Cst 52  s= 2 | Cst 53  s= 3 | Cst 54  s= 3 | Cst 55  s= 3 | Cst 56  s= 3
+Cst 57  s= 4 | Cst 58  s= 5 | Cst 59  s= 2 | Cst 60  s= 3 | Cst 61  s= 4 | Cst 62  s= 3 | Cst 63  s= 3 | Cst 64  s= 3
+Cst 65  s= 3 | Cst 66  s= 4 | Cst 67  s= 2 | Cst 68  s= 4 | Cst 69  s= 4 | Cst 70  s= 3 | Cst 71  s= 3 | Cst 72  s= 3
+Cst 73  s= 4 | Cst 74  s= 2 | Cst 75  s= 2 | Cst 76  s= 4 | Cst 77  s= 2 | Cst 78  s= 2 | Cst 79  s= 3 | Cst 80  s= 2
+Cst 81  s= 5 | Cst 82  s= 2 | Cst 83  s= 4 | Cst 84  s= 3 | Cst 85  s= 4 | Cst 86  s= 3 | Cst 87  s= 2 | Cst 88  s= 5
+Cst 89  s= 4 | Cst 90  s= 5 | Cst 91  s= 3 | Cst 92  s= 2 | Cst 93  s= 3 | Cst 94  s= 3 | Cst 95  s= 3 | Cst 96  s= 4
+Cst 97  s= 3 | Cst 98  s= 5 | Cst 99  s= 3 | Cst 100 s= 4
+
+Server: pepe
+---------------------------
+Cst 1   s= 4 | Cst 2   s= 3 | Cst 3   s= 3 | Cst 4   s= 3 | Cst 5   s= 2 | Cst 6   s= 3 | Cst 7   s= 3 | Cst 8   s= 2
+Cst 9   s= 5 | Cst 10  s= 3 | Cst 11  s= 3 | Cst 12  s= 4 | Cst 13  s= 3 | Cst 14  s= 2 | Cst 15  s= 2 | Cst 16  s= 3
+Cst 17  s= 2 | Cst 18  s= 3 | Cst 19  s= 4 | Cst 20  s= 3 | Cst 21  s= 2 | Cst 22  s= 3 | Cst 23  s= 5 | Cst 24  s= 2
+Cst 25  s= 3 | Cst 26  s= 2 | Cst 27  s= 3 | Cst 28  s= 3 | Cst 29  s= 2 | Cst 30  s= 3 | Cst 31  s= 3 | Cst 32  s= 3
+Cst 33  s= 2 | Cst 34  s= 2 | Cst 35  s= 2 | Cst 36  s= 2 | Cst 37  s= 3 | Cst 38  s= 3 | Cst 39  s= 2 | Cst 40  s= 2
+Cst 41  s= 2 | Cst 42  s= 3 | Cst 43  s= 4 | Cst 44  s= 2 | Cst 45  s= 5 | Cst 46  s= 2 | Cst 47  s= 5 | Cst 48  s= 3
+Cst 49  s= 2 | Cst 50  s= 3 | Cst 51  s= 3 | Cst 52  s= 3 | Cst 53  s= 3 | Cst 54  s= 3 | Cst 55  s= 3 | Cst 56  s= 3
+Cst 57  s= 2 | Cst 58  s= 3 | Cst 59  s= 2 | Cst 60  s= 4 | Cst 61  s= 3 | Cst 62  s= 5 | Cst 63  s= 3 | Cst 64  s= 4
+Cst 65  s= 4 | Cst 66  s= 2 | Cst 67  s= 3 | Cst 68  s= 3 | Cst 69  s= 4 | Cst 70  s= 3 | Cst 71  s= 2 | Cst 72  s= 4
+Cst 73  s= 4 | Cst 74  s= 3 | Cst 75  s= 2 | Cst 76  s= 5 | Cst 77  s= 3 | Cst 78  s= 3 | Cst 79  s= 4 | Cst 80  s= 3
+Cst 81  s= 4 | Cst 82  s= 2 | Cst 83  s= 3 | Cst 84  s= 3 | Cst 85  s= 2 | Cst 86  s= 2 | Cst 87  s= 5 | Cst 88  s= 3
+Cst 89  s= 2 | Cst 90  s= 5 | Cst 91  s= 5 | Cst 92  s= 3 | Cst 93  s= 4 | Cst 94  s= 2 | Cst 95  s= 2 | Cst 96  s= 4
+Cst 97  s= 4 | Cst 98  s= 4 | Cst 99  s= 3 | Cst 100 s= 4
+
+
+
+--- SIMULATION STARTING ---
+  [SETUP] FEL initialized with 100 ARRIVAL events.
+  [SETUP] All 2 servers initialized as IDLE.
+
+--- [CLOCK: 0] ---
+  ARRIVAL:   Customer 1 arrived at t=0.
+
+--- [CLOCK: 1] ---
+  ARRIVAL:   Customer 2 arrived at t=1.
+
+--- [CLOCK: 2] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 3] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 4] ---
+  DEPARTURE: Customer 1 finished service at server 'pepe'.
+
+--- [CLOCK: 5] ---
+  ARRIVAL:   Customer 3 arrived at t=5.
+
+--- [CLOCK: 6] ---
+  DEPARTURE: Customer 2 finished service at server 'sabo'.
+
+--- [CLOCK: 7] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 8] ---
+  DEPARTURE: Customer 3 finished service at server 'pepe'.
+  ARRIVAL:   Customer 4 arrived at t=8.
+
+--- [CLOCK: 9] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 10] ---
+  ARRIVAL:   Customer 5 arrived at t=10.
+
+--- [CLOCK: 11] ---
+  DEPARTURE: Customer 4 finished service at server 'pepe'.
+  ARRIVAL:   Customer 6 arrived at t=11.
+
+--- [CLOCK: 12] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 13] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 14] ---
+  DEPARTURE: Customer 6 finished service at server 'pepe'.
+  DEPARTURE: Customer 5 finished service at server 'sabo'.
+  ARRIVAL:   Customer 7 arrived at t=14.
+
+--- [CLOCK: 15] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 16] ---
+  ARRIVAL:   Customer 8 arrived at t=16.
+
+--- [CLOCK: 17] ---
+  DEPARTURE: Customer 7 finished service at server 'pepe'.
+  ARRIVAL:   Customer 9 arrived at t=17.
+
+--- [CLOCK: 18] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 19] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 20] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 21] ---
+  DEPARTURE: Customer 8 finished service at server 'sabo'.
+  ARRIVAL:   Customer 10 arrived at t=21.
+
+--- [CLOCK: 22] ---
+  DEPARTURE: Customer 9 finished service at server 'pepe'.
+  ARRIVAL:   Customer 11 arrived at t=22.
+
+--- [CLOCK: 23] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 24] ---
+  DEPARTURE: Customer 10 finished service at server 'sabo'.
+
+--- [CLOCK: 25] ---
+  DEPARTURE: Customer 11 finished service at server 'pepe'.
+
+--- [CLOCK: 26] ---
+  ARRIVAL:   Customer 12 arrived at t=26.
+
+--- [CLOCK: 27] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 28] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 29] ---
+  DEPARTURE: Customer 12 finished service at server 'sabo'.
+
+--- [CLOCK: 30] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 31] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 32] ---
+  ARRIVAL:   Customer 13 arrived at t=32.
+
+--- [CLOCK: 33] ---
+  ARRIVAL:   Customer 14 arrived at t=33.
+
+--- [CLOCK: 34] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 35] ---
+  DEPARTURE: Customer 14 finished service at server 'sabo'.
+  DEPARTURE: Customer 13 finished service at server 'pepe'.
+
+--- [CLOCK: 36] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 37] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 38] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 39] ---
+  ARRIVAL:   Customer 15 arrived at t=39.
+
+--- [CLOCK: 40] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 41] ---
+  DEPARTURE: Customer 15 finished service at server 'pepe'.
+
+--- [CLOCK: 42] ---
+  ARRIVAL:   Customer 16 arrived at t=42.
+
+--- [CLOCK: 43] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 44] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 45] ---
+  DEPARTURE: Customer 16 finished service at server 'pepe'.
+  ARRIVAL:   Customer 17 arrived at t=45.
+
+--- [CLOCK: 46] ---
+  ARRIVAL:   Customer 18 arrived at t=46.
+
+--- [CLOCK: 47] ---
+  DEPARTURE: Customer 17 finished service at server 'pepe'.
+  ARRIVAL:   Customer 19 arrived at t=47.
+
+--- [CLOCK: 48] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 49] ---
+  DEPARTURE: Customer 18 finished service at server 'sabo'.
+
+--- [CLOCK: 50] ---
+  ARRIVAL:   Customer 20 arrived at t=50.
+
+--- [CLOCK: 51] ---
+  DEPARTURE: Customer 19 finished service at server 'pepe'.
+
+--- [CLOCK: 52] ---
+  ARRIVAL:   Customer 21 arrived at t=52.
+
+--- [CLOCK: 53] ---
+  ARRIVAL:   Customer 22 arrived at t=53.
+
+--- [CLOCK: 54] ---
+  DEPARTURE: Customer 21 finished service at server 'pepe'.
+  DEPARTURE: Customer 20 finished service at server 'sabo'.
+  QUEUE->SERVER: Customer 22 (waited 1 min) assigned to (Best fit) server 'pepe'. Service time: 3 min. (Finishes at t=57)
+
+--- [CLOCK: 55] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 56] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 57] ---
+  DEPARTURE: Customer 22 finished service at server 'pepe'.
+
+--- [CLOCK: 58] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 59] ---
+  ARRIVAL:   Customer 23 arrived at t=59.
+
+--- [CLOCK: 60] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 61] ---
+  ARRIVAL:   Customer 24 arrived at t=61.
+
+--- [CLOCK: 62] ---
+  DEPARTURE: Customer 23 finished service at server 'sabo'.
+  ARRIVAL:   Customer 25 arrived at t=62.
+
+--- [CLOCK: 63] ---
+  DEPARTURE: Customer 24 finished service at server 'pepe'.
+
+--- [CLOCK: 64] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 65] ---
+  DEPARTURE: Customer 25 finished service at server 'sabo'.
+  ARRIVAL:   Customer 26 arrived at t=65.
+
+--- [CLOCK: 66] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 67] ---
+  DEPARTURE: Customer 26 finished service at server 'pepe'.
+  ARRIVAL:   Customer 27 arrived at t=67.
+
+--- [CLOCK: 68] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 69] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 70] ---
+  DEPARTURE: Customer 27 finished service at server 'pepe'.
+
+--- [CLOCK: 71] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 72] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 73] ---
+  ARRIVAL:   Customer 28 arrived at t=73.
+
+--- [CLOCK: 74] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 75] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 76] ---
+  DEPARTURE: Customer 28 finished service at server 'pepe'.
+  ARRIVAL:   Customer 29 arrived at t=76.
+
+--- [CLOCK: 77] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 78] ---
+  DEPARTURE: Customer 29 finished service at server 'pepe'.
+
+--- [CLOCK: 79] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 80] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 81] ---
+  ARRIVAL:   Customer 30 arrived at t=81.
+
+--- [CLOCK: 82] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 83] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 84] ---
+  DEPARTURE: Customer 30 finished service at server 'pepe'.
+
+--- [CLOCK: 85] ---
+  ARRIVAL:   Customer 31 arrived at t=85.
+
+--- [CLOCK: 86] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 87] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 88] ---
+  DEPARTURE: Customer 31 finished service at server 'pepe'.
+  ARRIVAL:   Customer 32 arrived at t=88.
+
+--- [CLOCK: 89] ---
+  ARRIVAL:   Customer 33 arrived at t=89.
+
+--- [CLOCK: 90] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 91] ---
+  DEPARTURE: Customer 32 finished service at server 'pepe'.
+
+--- [CLOCK: 92] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 93] ---
+  DEPARTURE: Customer 33 finished service at server 'sabo'.
+
+--- [CLOCK: 94] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 95] ---
+  ARRIVAL:   Customer 34 arrived at t=95.
+
+--- [CLOCK: 96] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 97] ---
+  DEPARTURE: Customer 34 finished service at server 'pepe'.
+
+--- [CLOCK: 98] ---
+  ARRIVAL:   Customer 35 arrived at t=98.
+
+--- [CLOCK: 99] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 100] ---
+  DEPARTURE: Customer 35 finished service at server 'pepe'.
+  ARRIVAL:   Customer 36 arrived at t=100.
+
+--- [CLOCK: 101] ---
+  ARRIVAL:   Customer 37 arrived at t=101.
+
+--- [CLOCK: 102] ---
+  DEPARTURE: Customer 36 finished service at server 'pepe'.
+
+--- [CLOCK: 103] ---
+  ARRIVAL:   Customer 38 arrived at t=103.
+
+--- [CLOCK: 104] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 105] ---
+  DEPARTURE: Customer 37 finished service at server 'sabo'.
+  ARRIVAL:   Customer 39 arrived at t=105.
+
+--- [CLOCK: 106] ---
+  DEPARTURE: Customer 38 finished service at server 'pepe'.
+
+--- [CLOCK: 107] ---
+  DEPARTURE: Customer 39 finished service at server 'sabo'.
+
+--- [CLOCK: 108] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 109] ---
+  ARRIVAL:   Customer 40 arrived at t=109.
+
+--- [CLOCK: 110] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 111] ---
+  DEPARTURE: Customer 40 finished service at server 'pepe'.
+
+--- [CLOCK: 112] ---
+  ARRIVAL:   Customer 41 arrived at t=112.
+
+--- [CLOCK: 113] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 114] ---
+  DEPARTURE: Customer 41 finished service at server 'pepe'.
+
+--- [CLOCK: 115] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 116] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 117] ---
+  ARRIVAL:   Customer 42 arrived at t=117.
+
+--- [CLOCK: 118] ---
+  ARRIVAL:   Customer 43 arrived at t=118.
+
+--- [CLOCK: 119] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 120] ---
+  DEPARTURE: Customer 42 finished service at server 'pepe'.
+  ARRIVAL:   Customer 44 arrived at t=120.
+
+--- [CLOCK: 121] ---
+  ARRIVAL:   Customer 45 arrived at t=121.
+
+--- [CLOCK: 122] ---
+  DEPARTURE: Customer 44 finished service at server 'pepe'.
+  QUEUE->SERVER: Customer 45 (waited 1 min) assigned to (Best fit) server 'pepe'. Service time: 5 min. (Finishes at t=127)
+
+--- [CLOCK: 123] ---
+  DEPARTURE: Customer 43 finished service at server 'sabo'.
+
+--- [CLOCK: 124] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 125] ---
+  ARRIVAL:   Customer 46 arrived at t=125.
+
+--- [CLOCK: 126] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 127] ---
+  DEPARTURE: Customer 45 finished service at server 'pepe'.
+  ARRIVAL:   Customer 47 arrived at t=127.
+
+--- [CLOCK: 128] ---
+  DEPARTURE: Customer 46 finished service at server 'sabo'.
+
+--- [CLOCK: 129] ---
+  ARRIVAL:   Customer 48 arrived at t=129.
+
+--- [CLOCK: 130] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 131] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 132] ---
+  DEPARTURE: Customer 47 finished service at server 'pepe'.
+  ARRIVAL:   Customer 49 arrived at t=132.
+
+--- [CLOCK: 133] ---
+  DEPARTURE: Customer 48 finished service at server 'sabo'.
+  ARRIVAL:   Customer 50 arrived at t=133.
+
+--- [CLOCK: 134] ---
+  DEPARTURE: Customer 49 finished service at server 'pepe'.
+
+--- [CLOCK: 135] ---
+  DEPARTURE: Customer 50 finished service at server 'sabo'.
+
+--- [CLOCK: 136] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 137] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 138] ---
+  ARRIVAL:   Customer 51 arrived at t=138.
+
+--- [CLOCK: 139] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 140] ---
+  ARRIVAL:   Customer 52 arrived at t=140.
+
+--- [CLOCK: 141] ---
+  DEPARTURE: Customer 51 finished service at server 'pepe'.
+
+--- [CLOCK: 142] ---
+  DEPARTURE: Customer 52 finished service at server 'sabo'.
+  ARRIVAL:   Customer 53 arrived at t=142.
+
+--- [CLOCK: 143] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 144] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 145] ---
+  DEPARTURE: Customer 53 finished service at server 'pepe'.
+
+--- [CLOCK: 146] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 147] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 148] ---
+  ARRIVAL:   Customer 54 arrived at t=148.
+
+--- [CLOCK: 149] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 150] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 151] ---
+  DEPARTURE: Customer 54 finished service at server 'pepe'.
+
+--- [CLOCK: 152] ---
+  ARRIVAL:   Customer 55 arrived at t=152.
+
+--- [CLOCK: 153] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 154] ---
+  ARRIVAL:   Customer 56 arrived at t=154.
+
+--- [CLOCK: 155] ---
+  DEPARTURE: Customer 55 finished service at server 'pepe'.
+
+--- [CLOCK: 156] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 157] ---
+  DEPARTURE: Customer 56 finished service at server 'sabo'.
+  ARRIVAL:   Customer 57 arrived at t=157.
+
+--- [CLOCK: 158] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 159] ---
+  DEPARTURE: Customer 57 finished service at server 'pepe'.
+
+--- [CLOCK: 160] ---
+  ARRIVAL:   Customer 58 arrived at t=160.
+
+--- [CLOCK: 161] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 162] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 163] ---
+  DEPARTURE: Customer 58 finished service at server 'pepe'.
+
+--- [CLOCK: 164] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 165] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 166] ---
+  ARRIVAL:   Customer 59 arrived at t=166.
+
+--- [CLOCK: 167] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 168] ---
+  DEPARTURE: Customer 59 finished service at server 'pepe'.
+
+--- [CLOCK: 169] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 170] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 171] ---
+  ARRIVAL:   Customer 60 arrived at t=171.
+
+--- [CLOCK: 172] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 173] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 174] ---
+  DEPARTURE: Customer 60 finished service at server 'sabo'.
+
+--- [CLOCK: 175] ---
+  ARRIVAL:   Customer 61 arrived at t=175.
+
+--- [CLOCK: 176] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 177] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 178] ---
+  DEPARTURE: Customer 61 finished service at server 'pepe'.
+  ARRIVAL:   Customer 62 arrived at t=178.
+
+--- [CLOCK: 179] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 180] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 181] ---
+  DEPARTURE: Customer 62 finished service at server 'sabo'.
+  ARRIVAL:   Customer 63 arrived at t=181.
+
+--- [CLOCK: 182] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 183] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 184] ---
+  DEPARTURE: Customer 63 finished service at server 'pepe'.
+
+--- [CLOCK: 185] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 186] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 187] ---
+  ARRIVAL:   Customer 64 arrived at t=187.
+
+--- [CLOCK: 188] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 189] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 190] ---
+  DEPARTURE: Customer 64 finished service at server 'sabo'.
+  ARRIVAL:   Customer 65 arrived at t=190.
+
+--- [CLOCK: 191] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 192] ---
+  ARRIVAL:   Customer 66 arrived at t=192.
+
+--- [CLOCK: 193] ---
+  DEPARTURE: Customer 65 finished service at server 'sabo'.
+
+--- [CLOCK: 194] ---
+  DEPARTURE: Customer 66 finished service at server 'pepe'.
+  ARRIVAL:   Customer 67 arrived at t=194.
+
+--- [CLOCK: 195] ---
+  ARRIVAL:   Customer 68 arrived at t=195.
+
+--- [CLOCK: 196] ---
+  DEPARTURE: Customer 67 finished service at server 'sabo'.
+  ARRIVAL:   Customer 69 arrived at t=196.
+
+--- [CLOCK: 197] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 198] ---
+  DEPARTURE: Customer 68 finished service at server 'pepe'.
+  ARRIVAL:   Customer 70 arrived at t=198.
+
+--- [CLOCK: 199] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 200] ---
+  DEPARTURE: Customer 69 finished service at server 'sabo'.
+  ARRIVAL:   Customer 71 arrived at t=200.
+
+--- [CLOCK: 201] ---
+  DEPARTURE: Customer 70 finished service at server 'pepe'.
+
+--- [CLOCK: 202] ---
+  ARRIVAL:   Customer 72 arrived at t=202.
+
+--- [CLOCK: 203] ---
+  DEPARTURE: Customer 71 finished service at server 'sabo'.
+  ARRIVAL:   Customer 73 arrived at t=203.
+
+--- [CLOCK: 204] ---
+  ARRIVAL:   Customer 74 arrived at t=204.
+
+--- [CLOCK: 205] ---
+
+--- [CLOCK: 206] ---
+  DEPARTURE: Customer 72 finished service at server 'pepe'.
+  QUEUE->SERVER: Customer 74 (waited 2 min) assigned to (Best fit) server 'pepe'. Service time: 3 min. (Finishes at t=209)
+
+--- [CLOCK: 207] ---
+  DEPARTURE: Customer 73 finished service at server 'sabo'.
+
+--- [CLOCK: 208] ---
+  ARRIVAL:   Customer 75 arrived at t=208.
+
+--- [CLOCK: 209] ---
+  DEPARTURE: Customer 74 finished service at server 'pepe'.
+
+--- [CLOCK: 210] ---
+  DEPARTURE: Customer 75 finished service at server 'sabo'.
+
+--- [CLOCK: 211] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 212] ---
+  ARRIVAL:   Customer 76 arrived at t=212.
+
+--- [CLOCK: 213] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 214] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 215] ---
+  ARRIVAL:   Customer 77 arrived at t=215.
+
+--- [CLOCK: 216] ---
+  DEPARTURE: Customer 76 finished service at server 'sabo'.
+
+--- [CLOCK: 217] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 218] ---
+  DEPARTURE: Customer 77 finished service at server 'pepe'.
+
+--- [CLOCK: 219] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 220] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 221] ---
+  ARRIVAL:   Customer 78 arrived at t=221.
+
+--- [CLOCK: 222] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 223] ---
+  DEPARTURE: Customer 78 finished service at server 'sabo'.
+
+--- [CLOCK: 224] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 225] ---
+  ARRIVAL:   Customer 79 arrived at t=225.
+
+--- [CLOCK: 226] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 227] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 228] ---
+  DEPARTURE: Customer 79 finished service at server 'sabo'.
+
+--- [CLOCK: 229] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 230] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 231] ---
+  ARRIVAL:   Customer 80 arrived at t=231.
+
+--- [CLOCK: 232] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 233] ---
+  DEPARTURE: Customer 80 finished service at server 'sabo'.
+
+--- [CLOCK: 234] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 235] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 236] ---
+  ARRIVAL:   Customer 81 arrived at t=236.
+
+--- [CLOCK: 237] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 238] ---
+  ARRIVAL:   Customer 82 arrived at t=238.
+
+--- [CLOCK: 239] ---
+  ARRIVAL:   Customer 83 arrived at t=239.
+
+--- [CLOCK: 240] ---
+  DEPARTURE: Customer 82 finished service at server 'sabo'.
+  DEPARTURE: Customer 81 finished service at server 'pepe'.
+  QUEUE->SERVER: Customer 83 (waited 1 min) assigned to (Best fit) server 'pepe'. Service time: 3 min. (Finishes at t=243)
+
+--- [CLOCK: 241] ---
+  ARRIVAL:   Customer 84 arrived at t=241.
+
+--- [CLOCK: 242] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 243] ---
+  DEPARTURE: Customer 83 finished service at server 'pepe'.
+
+--- [CLOCK: 244] ---
+  DEPARTURE: Customer 84 finished service at server 'sabo'.
+
+--- [CLOCK: 245] ---
+  ARRIVAL:   Customer 85 arrived at t=245.
+
+--- [CLOCK: 246] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 247] ---
+  DEPARTURE: Customer 85 finished service at server 'pepe'.
+
+--- [CLOCK: 248] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 249] ---
+  ARRIVAL:   Customer 86 arrived at t=249.
+
+--- [CLOCK: 250] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 251] ---
+  DEPARTURE: Customer 86 finished service at server 'pepe'.
+
+--- [CLOCK: 252] ---
+  ARRIVAL:   Customer 87 arrived at t=252.
+
+--- [CLOCK: 253] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 254] ---
+  DEPARTURE: Customer 87 finished service at server 'sabo'.
+  ARRIVAL:   Customer 88 arrived at t=254.
+
+--- [CLOCK: 255] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 256] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 257] ---
+  DEPARTURE: Customer 88 finished service at server 'pepe'.
+  ARRIVAL:   Customer 89 arrived at t=257.
+
+--- [CLOCK: 258] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 259] ---
+  DEPARTURE: Customer 89 finished service at server 'pepe'.
+  ARRIVAL:   Customer 90 arrived at t=259.
+
+--- [CLOCK: 260] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 261] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 262] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 263] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 264] ---
+  DEPARTURE: Customer 90 finished service at server 'pepe'.
+
+--- [CLOCK: 265] ---
+  ARRIVAL:   Customer 91 arrived at t=265.
+
+--- [CLOCK: 266] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 267] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 268] ---
+  DEPARTURE: Customer 91 finished service at server 'sabo'.
+
+--- [CLOCK: 269] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 270] ---
+  ARRIVAL:   Customer 92 arrived at t=270.
+
+--- [CLOCK: 271] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 272] ---
+  DEPARTURE: Customer 92 finished service at server 'sabo'.
+
+--- [CLOCK: 273] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 274] ---
+  ARRIVAL:   Customer 93 arrived at t=274.
+
+--- [CLOCK: 275] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 276] ---
+  ARRIVAL:   Customer 94 arrived at t=276.
+
+--- [CLOCK: 277] ---
+  DEPARTURE: Customer 93 finished service at server 'sabo'.
+
+--- [CLOCK: 278] ---
+  DEPARTURE: Customer 94 finished service at server 'pepe'.
+  ARRIVAL:   Customer 95 arrived at t=278.
+
+--- [CLOCK: 279] ---
+  ARRIVAL:   Customer 96 arrived at t=279.
+
+--- [CLOCK: 280] ---
+  DEPARTURE: Customer 95 finished service at server 'pepe'.
+
+--- [CLOCK: 281] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 282] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 283] ---
+  DEPARTURE: Customer 96 finished service at server 'sabo'.
+  ARRIVAL:   Customer 97 arrived at t=283.
+
+--- [CLOCK: 284] ---
+  ARRIVAL:   Customer 98 arrived at t=284.
+
+--- [CLOCK: 285] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 286] ---
+  DEPARTURE: Customer 97 finished service at server 'sabo'.
+  ARRIVAL:   Customer 99 arrived at t=286.
+
+--- [CLOCK: 287] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 288] ---
+  DEPARTURE: Customer 98 finished service at server 'pepe'.
+  ARRIVAL:   Customer 100 arrived at t=288.
+
+--- [CLOCK: 289] ---
+  DEPARTURE: Customer 99 finished service at server 'sabo'.
+
+--- [CLOCK: 290] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 291] ---
+  (No events scheduled, queue is empty.)
+
+--- [CLOCK: 292] ---
+  DEPARTURE: Customer 100 finished service at server 'pepe'.
+
+--- SIMULATION END ---
+Simulation finished at clock: 292
+
+=============================================
+--- SIMULATION STATISTICS & KPIs ---
+=============================================
+
+--- General Statistics ---
+  Total simulation time:     292 minutes
+  Total customers processed: 100
+  Customers who waited:      4
+  Maximum queue length:      1 customers
+
+--- Wait Time KPIs ---
+  Total wait time:           5.00 minutes
+  Avg. wait time (all cst):  0.05 minutes
+  Avg. wait time (waiting cst):1.25 minutes
+
+--- Server Utilization ---
+  Server [pepe    ]: Busy for  170 min. (Utilization: 58.22%)
+  Server [sabo    ]: Busy for  127 min. (Utilization: 43.49%)
+
+=============================================
